@@ -1,0 +1,19 @@
+{
+  "name": "yihyunjoon/ui",
+  "homepage": "https://ui.hyunjoon.net",
+  "items": [
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "A Base UI button component.",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "src/registry/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}
