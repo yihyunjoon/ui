@@ -1,6 +1,6 @@
 {
-  "short_name": "TanStack App",
-  "name": "Create TanStack App Sample",
+  "short_name": "yihyunjoon/ui",
+  "name": "UI component library by yihyunjoon",
   "icons": [
     {
       "src": "favicon.ico",
