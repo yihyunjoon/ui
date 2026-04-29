@@ -1,7 +1,8 @@
-import { Button } from '#/registry/button.tsx';
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Route = createFileRoute('/')({ component: Home })
+import { Button } from "#/registry/button.tsx";
+
+export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
   return (
@@ -11,5 +12,5 @@ function Home() {
         <Button>Click me</Button>
       </p>
     </div>
-  )
+  );
 }

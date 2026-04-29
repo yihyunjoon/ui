@@ -7,5 +7,10 @@
   },
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
-  }
+  },
+  "prettier.enable": false,
+  "eslint.enable": false,
+  "biome.enabled": false,
+  "oxc.enable": true,
+  "editor.defaultFormatter": "oxc.oxc-vscode"
 }
