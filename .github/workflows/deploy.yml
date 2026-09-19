@@ -46,3 +46,6 @@ jobs:
       - name: Verify the published registry
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         run: pnpm check:registry --url https://ui.hyunjoon.net
+      - name: Verify published documentation
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: pnpm check:docs --url https://ui.hyunjoon.net

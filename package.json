@@ -18,7 +18,8 @@
     "deploy": "pnpm run build && pnpm run check:registry && wrangler deploy",
     "check:registry": "node scripts/check-registry.mjs",
     "typecheck": "tsc --noEmit",
-    "test:install": "node scripts/test-registry-install.mjs"
+    "test:install": "node scripts/test-registry-install.mjs",
+    "check:docs": "node scripts/check-docs.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

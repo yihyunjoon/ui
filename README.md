@@ -86,3 +86,24 @@ For a local deployment with Wrangler authentication configured:
 pnpm deploy
 pnpm check:registry --url https://ui.hyunjoon.net
 ```
+
+## Documentation
+
+The site starts at `/docs`. Every UI component has a page at
+`/docs/components/<name>` with a description, live preview, install command,
+complete usage example, and guidance. The sidebar supports search and active-page
+navigation, with a collapsible drawer on mobile.
+
+Edit descriptions and guidance in `src/docs/content.json`. Edit runnable examples
+in `src/docs/examples/`; the documentation shows those same files as usage code,
+rewriting only the consumer import prefix. Previews are loaded per component.
+Tests require one working example and documentation entry for every UI component.
+
+To validate all documentation URLs against a running preview or production:
+
+```sh
+pnpm check:docs --url http://localhost:3000
+```
+
+CI runs this check against production after deployment, including unknown-page
+404 handling. The documentation source is separate from the distributable registry.

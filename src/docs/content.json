@@ -1,0 +1,266 @@
+{
+  "accordion": {
+    "description": "Reveal related sections without leaving the page.",
+    "guidance": "Compose one AccordionItem per section with a stable value. Use defaultValue for an initially open section."
+  },
+  "alert": {
+    "description": "Keep an important status message visible within the page.",
+    "guidance": "Pair a short title with actionable supporting text. Use an alert dialog when the user must make a decision."
+  },
+  "alert-dialog": {
+    "description": "Ask for confirmation before an important action.",
+    "guidance": "Give the dialog a title and description. Keep a clear cancel action next to the confirmation button."
+  },
+  "aspect-ratio": {
+    "description": "Reserve a predictable shape for images, video, or other media.",
+    "guidance": "Set ratio to width divided by height. Size the parent container to control the final dimensions."
+  },
+  "attachment": {
+    "description": "Present a file with its name, details, and optional actions.",
+    "guidance": "Compose media, content, and actions to suit your file type. Download and upload behavior stays in your application."
+  },
+  "avatar": {
+    "description": "Identify a person or team with an image and fallback initials.",
+    "guidance": "Provide meaningful alternative text for images. AvatarFallback remains useful while an image loads or fails."
+  },
+  "badge": {
+    "description": "Label an item with a compact status or category.",
+    "guidance": "Choose a variant that matches the meaning. Keep labels short and do not rely on color alone."
+  },
+  "breadcrumb": {
+    "description": "Show the hierarchy leading to the current page.",
+    "guidance": "Link earlier locations and mark the final item as the current page. Keep this hierarchy separate from primary navigation."
+  },
+  "bubble": {
+    "description": "Group a short conversational message into a visual bubble.",
+    "guidance": "Use align to distinguish speakers. BubbleContent can render a link or button when the bubble itself is interactive."
+  },
+  "button": {
+    "description": "Trigger an action or give a link the appearance of a button.",
+    "guidance": "Use variant and size to express hierarchy. Set type explicitly inside forms and label icon-only buttons."
+  },
+  "button-group": {
+    "description": "Arrange related actions as a single visual group.",
+    "guidance": "Group actions that affect the same content. Each child remains a regular button with its own accessible label."
+  },
+  "calendar": {
+    "description": "Choose a date or explore a month using a calendar grid.",
+    "guidance": "Set mode to single, multiple, or range. Connect selected and onSelect when the application controls the selection."
+  },
+  "card": {
+    "description": "Organize related content and actions into a contained surface.",
+    "guidance": "Use the header for a title and supporting context. Place the primary action in the footer when it follows the content."
+  },
+  "carousel": {
+    "description": "Move through a sequence of slides in a limited space.",
+    "guidance": "Place slides inside CarouselContent. Keep previous and next controls reachable and give images descriptive alternative text."
+  },
+  "chart": {
+    "description": "Render data visualizations with shared theme colors and tooltips.",
+    "guidance": "Provide a ChartContainer config for each series. Give the chart a measurable height and pass your data to the Recharts chart."
+  },
+  "checkbox": {
+    "description": "Toggle an independent choice or select several options.",
+    "guidance": "Always associate the checkbox with visible text. Use checked and onCheckedChange for a controlled field."
+  },
+  "collapsible": {
+    "description": "Reveal an optional region of content on demand.",
+    "guidance": "Keep the trigger visible when the content is closed. Use Accordion when you need a collection of related sections."
+  },
+  "combobox": {
+    "description": "Search a list of choices and select a matching value.",
+    "guidance": "Pass items to the root and render options in ComboboxList. Include an empty state for searches without results."
+  },
+  "command": {
+    "description": "Filter and execute actions from a keyboard-friendly list.",
+    "guidance": "Organize related commands into groups. Handle onSelect on an item to connect it to a real application action."
+  },
+  "context-menu": {
+    "description": "Show contextual actions for a right-clicked element.",
+    "guidance": "Attach the trigger to the target content. Provide another way to reach essential actions on touch devices."
+  },
+  "data-table": {
+    "description": "Render typed records using a reusable TanStack Table v9 composition.",
+    "guidance": "Define columns with createColumnHelper and pass records as data. This minimal composition can be extended with table features such as sorting and pagination."
+  },
+  "date-picker": {
+    "description": "Choose a date from a calendar inside a popover.",
+    "guidance": "Control the selection with value and onValueChange. Use disabled to prevent changes and locale to localize the calendar."
+  },
+  "dialog": {
+    "description": "Focus attention on a task in a modal window.",
+    "guidance": "Include a title and description for context. Use render to compose the trigger with a Button, and close the dialog after completing the task."
+  },
+  "direction": {
+    "description": "Provide text direction to components that support right-to-left layouts.",
+    "guidance": "Wrap the relevant subtree in DirectionProvider. Set the HTML dir attribute as well when surrounding text and layout should follow the same direction."
+  },
+  "drawer": {
+    "description": "Present supporting content in a panel that enters from an edge.",
+    "guidance": "Give the panel a title and a clear dismissal action. Keep long content scrollable and place primary actions where they remain reachable."
+  },
+  "dropdown-menu": {
+    "description": "Offer a compact list of actions from a trigger.",
+    "guidance": "Use menu items for commands rather than form fields. Group related actions and make disabled options visibly unavailable."
+  },
+  "empty": {
+    "description": "Explain why a collection has no content and offer a next step.",
+    "guidance": "Use a specific title and useful description. Add an action when the user can create or recover the missing content."
+  },
+  "field": {
+    "description": "Lay out a label, control, description, and validation feedback.",
+    "guidance": "Connect the label to the control with htmlFor and id. Field supplies layout; your form library supplies validation and state."
+  },
+  "form": {
+    "description": "Connect React Hook Form state with accessible labels and validation messages.",
+    "guidance": "Wrap controls in FormField and FormItem. Compose FormControl with render, and pass validation rules to FormField."
+  },
+  "hover-card": {
+    "description": "Reveal supporting information when a trigger is hovered or focused.",
+    "guidance": "Use it for optional context rather than essential instructions. Keep the trigger useful as a link even without opening the card."
+  },
+  "input": {
+    "description": "Collect a single line of text using a styled input.",
+    "guidance": "Choose an appropriate HTML type and supply a label. Use value and onChange when managing the field in application state."
+  },
+  "input-group": {
+    "description": "Attach labels, icons, or actions to a text control.",
+    "guidance": "Place the editable input inside InputGroup. Use addons for context without replacing a proper field label."
+  },
+  "input-otp": {
+    "description": "Collect a short verification code in visually separated slots.",
+    "guidance": "Set maxLength to the expected code length. Slot indexes start at zero and must remain within that length."
+  },
+  "item": {
+    "description": "Lay out a compact row of content with optional media and actions.",
+    "guidance": "Use ItemContent for the main text and ItemActions for controls. A group of items can share separators for a denser layout."
+  },
+  "kbd": {
+    "description": "Display a key or keyboard shortcut within explanatory text.",
+    "guidance": "Kbd is a visual label and does not register a shortcut. Implement the actual keyboard behavior in your application."
+  },
+  "label": {
+    "description": "Associate a clear text label with a form control.",
+    "guidance": "Match htmlFor with the input id. Keep the visible label available instead of relying on placeholder text alone."
+  },
+  "marker": {
+    "description": "Mark a boundary or moment in a feed or conversation.",
+    "guidance": "Choose a separator variant to divide groups visually. Keep its text concise, such as a date or status change."
+  },
+  "menubar": {
+    "description": "Expose groups of commands in a desktop-style menu bar.",
+    "guidance": "Each menu has its own trigger and content. Use command names that make sense outside their visual grouping."
+  },
+  "message": {
+    "description": "Structure a conversation entry with an author, content, and metadata.",
+    "guidance": "Use MessageHeader and MessageFooter for attribution and time. Pair MessageContent with Bubble when you want a chat-bubble appearance."
+  },
+  "message-scroller": {
+    "description": "Keep a conversation scrollable as messages are added.",
+    "guidance": "Wrap the scroller in MessageScrollerProvider and give its parent a fixed height. Assign each item a stable messageId."
+  },
+  "native-select": {
+    "description": "Use the browser\u2019s built-in select control with consistent styling.",
+    "guidance": "Provide a label and a meaningful option value. Prefer it when native platform behavior is more important than a custom popup."
+  },
+  "navigation-menu": {
+    "description": "Organize primary navigation links and optional content panels.",
+    "guidance": "Use links for destinations and triggers for expandable groups. Keep navigation labels concise and descriptive."
+  },
+  "pagination": {
+    "description": "Move between pages of a larger collection.",
+    "guidance": "Track the current page and mark its link active. Connect previous and next actions to your data source or route."
+  },
+  "popover": {
+    "description": "Show contextual content in an anchored floating panel.",
+    "guidance": "Give the panel a title or accessible label. Use controlled open state when opening or closing depends on application events."
+  },
+  "progress": {
+    "description": "Represent the completion of a measurable task.",
+    "guidance": "Provide a numeric value and an accessible label. Add text when the exact percentage matters to the user."
+  },
+  "questionnaire": {
+    "description": "Guide a user through a structured set of questions.",
+    "guidance": "Declare stable item names and choice values. Handle submission in your application and keep required questions clearly identified."
+  },
+  "radio-group": {
+    "description": "Choose one option from a set of mutually exclusive values.",
+    "guidance": "Give the group a clear label and each item a visible option name. Use defaultValue or controlled value to establish the selection."
+  },
+  "resizable": {
+    "description": "Let users adjust the space allocated to neighboring panels.",
+    "guidance": "Place handles between panels in a panel group. Give the container a useful size and set minimum panel sizes when content requires them."
+  },
+  "scroll-area": {
+    "description": "Contain overflowing content within a styled scroll region.",
+    "guidance": "Set a bounded height or width to enable scrolling. Keep the content readable and avoid nesting unnecessary scroll regions."
+  },
+  "select": {
+    "description": "Choose one value from a custom popup list.",
+    "guidance": "Compose a trigger, current value, and option list. Label the trigger and use stable values for the options."
+  },
+  "separator": {
+    "description": "Separate groups of related content visually.",
+    "guidance": "Choose horizontal or vertical orientation to match the layout. Avoid adding separators between elements that already read as one group."
+  },
+  "sheet": {
+    "description": "Open a supporting panel from the side of the screen.",
+    "guidance": "Include a title and description and provide a way to close it. Use a dialog for a centered task that should dominate the page."
+  },
+  "sidebar": {
+    "description": "Build persistent navigation with a responsive mobile panel.",
+    "guidance": "Wrap the layout in SidebarProvider. Use SidebarInset for the main content and SidebarTrigger when the navigation can collapse."
+  },
+  "skeleton": {
+    "description": "Reserve space while content is loading.",
+    "guidance": "Match the approximate dimensions of the content that will replace it. Announce loading through surrounding accessible text when needed."
+  },
+  "slider": {
+    "description": "Adjust a numeric value by dragging or using the keyboard.",
+    "guidance": "Specify the minimum, maximum, and step for your range. Controlled values are arrays so the same component can represent multiple thumbs."
+  },
+  "sonner": {
+    "description": "Show temporary notifications through the Sonner toast system.",
+    "guidance": "Mount one Toaster for the relevant application area. Trigger messages through the sonner toast API and use next-themes for theme synchronization."
+  },
+  "spinner": {
+    "description": "Indicate that an operation is still running.",
+    "guidance": "Pair it with short status text when the reason for waiting is not obvious. Avoid hiding an actionable error behind indefinite loading."
+  },
+  "switch": {
+    "description": "Turn a setting on or off immediately.",
+    "guidance": "Use a label that describes the setting itself. Prefer a checkbox when the choice is part of a form that needs explicit submission."
+  },
+  "table": {
+    "description": "Display structured rows and columns with semantic HTML.",
+    "guidance": "Give columns meaningful headings and add a caption for context. Use Data Table when you need a typed data-driven composition."
+  },
+  "tabs": {
+    "description": "Switch between related panels within the same page.",
+    "guidance": "Match each trigger value with a content value. Use tabs for peer content rather than a sequence of steps."
+  },
+  "textarea": {
+    "description": "Collect longer text that may span several lines.",
+    "guidance": "Supply a visible label and choose a useful starting size. Keep validation and character limits close to the field."
+  },
+  "toast": {
+    "description": "Display transient notifications with the Base UI toast manager.",
+    "guidance": "Mount Toaster and call toast.add to create a notification. Keep important information available elsewhere after the toast disappears."
+  },
+  "toggle": {
+    "description": "Represent a button that can remain pressed.",
+    "guidance": "Give the toggle an accessible name describing the option. Use pressed and onPressedChange when controlling its state."
+  },
+  "toggle-group": {
+    "description": "Collect related pressed-state choices into a single group.",
+    "guidance": "Give every item a distinct value and label. Choose whether one or multiple options may be active for your use case."
+  },
+  "tooltip": {
+    "description": "Explain a control with short text on hover or focus.",
+    "guidance": "Wrap tooltip content in TooltipProvider. Use tooltips for supplementary information rather than the only label of a control."
+  },
+  "typography": {
+    "description": "Build a consistent hierarchy using semantic text components.",
+    "guidance": "Choose the heading level for document structure, not just appearance. Combine the exported paragraph and supporting-text styles as needed."
+  }
+}
