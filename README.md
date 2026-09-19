@@ -124,3 +124,6 @@ to navigate. The page outline tracks the current section while scrolling.
 The Theme menu supports light, dark, and system appearance, plus neutral/blue/green
 colors, corner radius, and compact controls and tables. Preferences are saved in the
 browser; Reset theme restores system appearance and the original design tokens.
+
+CI also checks formatting. GitHub Actions are pinned to reviewed release commits
+using the Node.js 24 action runtime; application builds continue to use Node.js 22.
