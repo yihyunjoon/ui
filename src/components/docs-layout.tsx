@@ -5,6 +5,8 @@ import { AppSidebar } from "#/components/app-sidebar";
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "#/components/ui/sidebar";
 import { findComponentDoc } from "#/docs/catalog";
 
+import { DocsSearch } from "./docs-search";
+
 export function DocsLayout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
   const name = pathname.split("/").pop() ?? "";
@@ -26,9 +28,10 @@ export function DocsLayout({ children }: { children: ReactNode }) {
             </span>
             <span aria-current="page">{title}</span>
           </nav>
+          <DocsSearch />
           <a
             href="https://github.com/yihyunjoon/ui"
-            className="ml-auto text-sm text-muted-foreground hover:text-foreground"
+            className="text-sm text-muted-foreground hover:text-foreground"
           >
             GitHub ↗
           </a>

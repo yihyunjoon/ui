@@ -4,6 +4,7 @@ import { ApiReference } from "#/components/api-reference";
 import { CodeBlock } from "#/components/code-block";
 import { ExampleViewer } from "#/components/example-viewer";
 import { InstallCommand } from "#/components/install-command";
+import { PageToc } from "#/components/page-toc";
 import {
   componentDocs,
   findComponentDoc,
@@ -100,18 +101,7 @@ function ComponentPage() {
         </nav>
       </main>
       <aside className="hidden w-36 shrink-0 xl:block">
-        <nav aria-label="On this page" className="sticky top-24 space-y-3 text-sm">
-          <p className="font-medium">On this page</p>
-          {["Preview", "Installation", "Usage", "API", "Guidelines"].map((section) => (
-            <a
-              key={section}
-              href={`#${section.toLowerCase()}`}
-              className="block text-muted-foreground hover:text-foreground"
-            >
-              {section === "Guidelines" ? "Usage notes" : section}
-            </a>
-          ))}
-        </nav>
+        <PageToc key={doc.name} />
       </aside>
     </div>
   );

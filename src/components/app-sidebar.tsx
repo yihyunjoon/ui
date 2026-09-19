@@ -15,15 +15,13 @@ import {
   SidebarRail,
   useSidebar,
 } from "#/components/ui/sidebar";
-import { componentDocs } from "#/docs/catalog";
+import { searchComponents } from "#/docs/search";
 
 export function AppSidebar() {
   const [query, setQuery] = useState("");
   const { pathname } = useLocation();
   const { setOpenMobile } = useSidebar();
-  const visible = componentDocs.filter((item) =>
-    item.title.toLowerCase().includes(query.trim().toLowerCase()),
-  );
+  const visible = searchComponents(query);
   function closeMobile() {
     setOpenMobile(false);
   }

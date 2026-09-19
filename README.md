@@ -116,3 +116,7 @@ mode-specific props remain subject to their TypeScript discriminated unions.
 Examples include Preview/Code tabs, syntax-highlighted TSX, and copy controls.
 Installation commands can be switched between pnpm, npm, Yarn, and Bun. Highlighting
 loads progressively using Shiki with only TSX and shell grammars.
+
+Search matches component titles, descriptions, guidance, and common synonyms.
+Open the search dialog with Command+K or Control+K, then use arrow keys and Enter
+to navigate. The page outline tracks the current section while scrolling.
