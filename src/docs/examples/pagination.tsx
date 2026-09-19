@@ -15,7 +15,14 @@ export default function Example() {
     <Pagination>
       <PaginationContent>
         <PaginationItem>
-          <PaginationPrevious href="#preview" />
+          <PaginationPrevious
+            href="#preview"
+            aria-disabled={page === 1}
+            onClick={(event) => {
+              event.preventDefault();
+              setPage((current) => Math.max(1, current - 1));
+            }}
+          />
         </PaginationItem>
         {[1, 2, 3].map((number) => (
           <PaginationItem key={number}>
@@ -32,7 +39,14 @@ export default function Example() {
           </PaginationItem>
         ))}
         <PaginationItem>
-          <PaginationNext href="#preview" />
+          <PaginationNext
+            href="#preview"
+            aria-disabled={page === 3}
+            onClick={(event) => {
+              event.preventDefault();
+              setPage((current) => Math.min(3, current + 1));
+            }}
+          />
         </PaginationItem>
       </PaginationContent>
     </Pagination>
