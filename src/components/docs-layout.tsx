@@ -6,6 +6,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from "#/components/ui/s
 import { findComponentDoc } from "#/docs/catalog";
 
 import { DocsSearch } from "./docs-search";
+import { ThemeSettings } from "./theme-settings";
 
 export function DocsLayout({ children }: { children: ReactNode }) {
   const { pathname } = useLocation();
@@ -29,6 +30,7 @@ export function DocsLayout({ children }: { children: ReactNode }) {
             <span aria-current="page">{title}</span>
           </nav>
           <DocsSearch />
+          <ThemeSettings />
           <a
             href="https://github.com/yihyunjoon/ui"
             className="text-sm text-muted-foreground hover:text-foreground"

@@ -120,3 +120,7 @@ loads progressively using Shiki with only TSX and shell grammars.
 Search matches component titles, descriptions, guidance, and common synonyms.
 Open the search dialog with Command+K or Control+K, then use arrow keys and Enter
 to navigate. The page outline tracks the current section while scrolling.
+
+The Theme menu supports light, dark, and system appearance, plus neutral/blue/green
+colors, corner radius, and compact controls and tables. Preferences are saved in the
+browser; Reset theme restores system appearance and the original design tokens.
