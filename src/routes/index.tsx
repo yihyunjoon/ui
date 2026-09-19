@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { Button } from "#/registry/button.tsx";
+import { RegistryCatalog } from "#/components/registry-catalog";
 import { AppSidebar } from "@/components/app-sidebar";
 import {
   Breadcrumb,
@@ -26,18 +26,16 @@ function Home() {
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">Components</BreadcrumbLink>
+                  <BreadcrumbLink href="#components">Components</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>Registry</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
           </header>
-          <div className="p-4">
-            <Button>Button</Button>
-          </div>
+          <RegistryCatalog />
         </SidebarInset>
       </SidebarProvider>
     </div>

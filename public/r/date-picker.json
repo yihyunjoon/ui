@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "title": "Date Picker",
+  "description": "Customizable Date Picker component for React.",
+  "dependencies": [
+    "lucide-react@^0.577.0"
+  ],
+  "registryDependencies": [
+    "https://ui.hyunjoon.net/r/button.json",
+    "https://ui.hyunjoon.net/r/calendar.json",
+    "https://ui.hyunjoon.net/r/popover.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/base-nova/ui/date-picker.tsx",
+      "content": "\"use client\";\n\nimport { CalendarIcon } from \"lucide-react\";\nimport { useState, type ComponentProps } from \"react\";\n\nimport { Button } from \"@/registry/base-nova/ui/button\";\nimport { Calendar } from \"@/registry/base-nova/ui/calendar\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/registry/base-nova/ui/popover\";\n\ntype DatePickerProps = {\n  value?: Date;\n  onValueChange: (date: Date | undefined) => void;\n  placeholder?: string;\n  disabled?: boolean;\n  id?: string;\n  locale?: ComponentProps<typeof Calendar>[\"locale\"];\n};\n\nfunction DatePicker({\n  value,\n  onValueChange,\n  placeholder = \"Pick a date\",\n  disabled,\n  id,\n  locale,\n}: DatePickerProps) {\n  const [open, setOpen] = useState(false);\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger\n        render={\n          <Button\n            id={id}\n            variant=\"outline\"\n            disabled={disabled}\n            className=\"min-w-48 justify-start\"\n          />\n        }\n      >\n        <CalendarIcon aria-hidden=\"true\" />\n        {value ? value.toLocaleDateString(locale?.code, { dateStyle: \"long\" }) : placeholder}\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\" align=\"start\" aria-label=\"Choose a date\">\n        <Calendar\n          mode=\"single\"\n          selected={value}\n          defaultMonth={value}\n          locale={locale}\n          onSelect={(date) => {\n            onValueChange(date);\n            setOpen(false);\n          }}\n        />\n      </PopoverContent>\n    </Popover>\n  );\n}\n\nexport { DatePicker, type DatePickerProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "docs": "https://ui.shadcn.com/docs/components/base/date-picker"
+  },
+  "type": "registry:ui"
+}

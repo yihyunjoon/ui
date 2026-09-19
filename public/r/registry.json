@@ -4,18 +4,1220 @@
   "homepage": "https://ui.hyunjoon.net",
   "items": [
     {
-      "name": "button",
+      "name": "accordion",
       "type": "registry:ui",
-      "title": "Button",
-      "description": "A Base UI button component.",
-      "dependencies": [
-        "@base-ui/react",
-        "class-variance-authority"
+      "title": "Accordion",
+      "description": "Customizable Accordion component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/accordion"
+      }
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Customizable Alert component for React.",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/alert"
+      }
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Customizable Alert Dialog component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
       ],
       "files": [
         {
-          "path": "src/registry/button.tsx",
+          "path": "src/registry/base-nova/ui/alert-dialog.tsx",
           "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/alert-dialog"
+      }
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Customizable Aspect Ratio component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/aspect-ratio"
+      }
+    },
+    {
+      "name": "attachment",
+      "type": "registry:ui",
+      "title": "Attachment",
+      "description": "Customizable Attachment component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/attachment.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/attachment"
+      }
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Customizable Avatar component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/avatar"
+      }
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Customizable Badge component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/badge"
+      }
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Customizable Breadcrumb component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/breadcrumb"
+      }
+    },
+    {
+      "name": "bubble",
+      "type": "registry:ui",
+      "title": "Bubble",
+      "description": "Customizable Bubble component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/bubble"
+      }
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Customizable Button component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/button"
+      }
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Customizable Button Group component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/separator.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/button-group"
+      }
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Customizable Calendar component for React.",
+      "dependencies": ["lucide-react@^0.577.0", "react-day-picker@^10.0.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/calendar"
+      }
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Customizable Card component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/card"
+      }
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Customizable Carousel component for React.",
+      "dependencies": ["embla-carousel-react@^8.6.0", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/carousel"
+      }
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Customizable Chart component for React.",
+      "dependencies": ["recharts@3.8.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/chart"
+      }
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Customizable Checkbox component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/checkbox"
+      }
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Customizable Collapsible component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/collapsible"
+      }
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Customizable Combobox component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/input-group.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/combobox"
+      }
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Customizable Command component for React.",
+      "dependencies": ["cmdk@^1.1.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/dialog.json",
+        "https://ui.hyunjoon.net/r/input-group.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/command"
+      }
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Customizable Context Menu component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/context-menu"
+      }
+    },
+    {
+      "name": "data-table",
+      "type": "registry:ui",
+      "title": "Data Table",
+      "description": "Customizable Data Table component for React.",
+      "dependencies": ["@tanstack/react-table@^9.2.4"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/table.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/data-table"
+      }
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "description": "Customizable Date Picker component for React.",
+      "dependencies": ["lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/calendar.json",
+        "https://ui.hyunjoon.net/r/popover.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/date-picker"
+      }
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Customizable Dialog component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/dialog"
+      }
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "Customizable Direction component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/direction"
+      }
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Customizable Drawer component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/drawer"
+      }
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Customizable Dropdown Menu component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/dropdown-menu"
+      }
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Customizable Empty component for React.",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/empty"
+      }
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Customizable Field component for React.",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/label.json",
+        "https://ui.hyunjoon.net/r/separator.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/field"
+      }
+    },
+    {
+      "name": "form",
+      "type": "registry:ui",
+      "title": "Form",
+      "description": "Customizable Form component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "react-hook-form@^7.88.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/label.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/form"
+      }
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Customizable Hover Card component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/hover-card"
+      }
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Customizable Input component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/input"
+      }
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Customizable Input Group component for React.",
+      "dependencies": ["class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/input.json",
+        "https://ui.hyunjoon.net/r/textarea.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/input-group"
+      }
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input Otp",
+      "description": "Customizable Input Otp component for React.",
+      "dependencies": ["input-otp@^1.5.0", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/input-otp"
+      }
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "Customizable Item component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/separator.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/item"
+      }
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Customizable Kbd component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/kbd"
+      }
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Customizable Label component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/label"
+      }
+    },
+    {
+      "name": "marker",
+      "type": "registry:ui",
+      "title": "Marker",
+      "description": "Customizable Marker component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/marker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/marker"
+      }
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Customizable Menubar component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/dropdown-menu.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/menubar"
+      }
+    },
+    {
+      "name": "message",
+      "type": "registry:ui",
+      "title": "Message",
+      "description": "Customizable Message component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/message.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/message"
+      }
+    },
+    {
+      "name": "message-scroller",
+      "type": "registry:ui",
+      "title": "Message Scroller",
+      "description": "Customizable Message Scroller component for React.",
+      "dependencies": ["@shadcn/react@^0.3.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/message-scroller.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/message-scroller"
+      }
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Customizable Native Select component for React.",
+      "dependencies": ["lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/native-select"
+      }
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Customizable Navigation Menu component for React.",
+      "dependencies": [
+        "@base-ui/react@^1.4.1",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^0.577.0"
+      ],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/navigation-menu"
+      }
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Customizable Pagination component for React.",
+      "dependencies": ["lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/pagination"
+      }
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Customizable Popover component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/popover"
+      }
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Customizable Progress component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/progress"
+      }
+    },
+    {
+      "name": "questionnaire",
+      "type": "registry:ui",
+      "title": "Questionnaire",
+      "description": "Customizable Questionnaire component for React.",
+      "dependencies": ["@shadcn/react@^0.3.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/questionnaire.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/questionnaire"
+      }
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "Customizable Radio Group component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/radio-group"
+      }
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Customizable Resizable component for React.",
+      "dependencies": ["react-resizable-panels@^4.12.4"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/resizable"
+      }
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Customizable Scroll Area component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/scroll-area"
+      }
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Customizable Select component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/select"
+      }
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Customizable Separator component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/separator"
+      }
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Customizable Sheet component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/sheet"
+      }
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Customizable Sidebar component for React.",
+      "dependencies": [
+        "@base-ui/react@^1.4.1",
+        "class-variance-authority@^0.7.1",
+        "lucide-react@^0.577.0"
+      ],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/input.json",
+        "https://ui.hyunjoon.net/r/separator.json",
+        "https://ui.hyunjoon.net/r/sheet.json",
+        "https://ui.hyunjoon.net/r/skeleton.json",
+        "https://ui.hyunjoon.net/r/tooltip.json",
+        "https://ui.hyunjoon.net/r/use-mobile.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/sidebar"
+      }
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Customizable Skeleton component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/skeleton"
+      }
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Customizable Slider component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/slider"
+      }
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Customizable Sonner component for React.",
+      "dependencies": ["lucide-react@^0.577.0", "next-themes@^0.4.6", "sonner@^2.0.8"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/sonner"
+      }
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Customizable Spinner component for React.",
+      "dependencies": ["lucide-react@^0.577.0"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/spinner"
+      }
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Customizable Switch component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/switch"
+      }
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Customizable Table component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/table"
+      }
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Customizable Tabs component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/tabs"
+      }
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Customizable Textarea component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/textarea"
+      }
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Customizable Toast component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "lucide-react@^0.577.0"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/button.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/toast"
+      }
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Customizable Toggle component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/toggle"
+      }
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Customizable Toggle Group component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1", "class-variance-authority@^0.7.1"],
+      "registryDependencies": [
+        "https://ui.hyunjoon.net/r/toggle.json",
+        "https://ui.hyunjoon.net/r/utils.json"
+      ],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/toggle-group"
+      }
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Customizable Tooltip component for React.",
+      "dependencies": ["@base-ui/react@^1.4.1"],
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/tooltip"
+      }
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "description": "Customizable Typography component for React.",
+      "registryDependencies": ["https://ui.hyunjoon.net/r/utils.json"],
+      "files": [
+        {
+          "path": "src/registry/base-nova/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "meta": {
+        "docs": "https://ui.shadcn.com/docs/components/base/typography"
+      }
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "Use Mobile",
+      "description": "Customizable Use Mobile utility for React.",
+      "files": [
+        {
+          "path": "src/registry/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "Customizable Utils utility for React.",
+      "dependencies": ["clsx@^2.1.1", "tailwind-merge@^3.0.2"],
+      "files": [
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib"
         }
       ]
     }

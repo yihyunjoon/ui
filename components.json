@@ -15,9 +15,9 @@
   "aliases": {
     "components": "#/components",
     "utils": "#/lib/utils",
-    "ui": "#/components/ui",
+    "ui": "#/registry/base-nova/ui",
     "lib": "#/lib",
-    "hooks": "#/hooks"
+    "hooks": "#/registry/hooks"
   },
   "menuColor": "default",
   "menuAccent": "subtle",

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "Customizable Spinner component for React.",
+  "dependencies": [
+    "lucide-react@^0.577.0"
+  ],
+  "registryDependencies": [
+    "https://ui.hyunjoon.net/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/base-nova/ui/spinner.tsx",
+      "content": "import { Loader2Icon } from \"lucide-react\";\n\nimport { cn } from \"@/lib/utils\";\n\nfunction Spinner({ className, ...props }: React.ComponentProps<\"svg\">) {\n  return (\n    <Loader2Icon\n      data-slot=\"spinner\"\n      role=\"status\"\n      aria-label=\"Loading\"\n      className={cn(\"size-4 animate-spin\", className)}\n      {...props}\n    />\n  );\n}\n\nexport { Spinner };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "docs": "https://ui.shadcn.com/docs/components/base/spinner"
+  },
+  "type": "registry:ui"
+}

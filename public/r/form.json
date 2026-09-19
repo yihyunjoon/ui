@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "form",
+  "title": "Form",
+  "description": "Customizable Form component for React.",
+  "dependencies": [
+    "@base-ui/react@^1.4.1",
+    "react-hook-form@^7.88.0"
+  ],
+  "registryDependencies": [
+    "https://ui.hyunjoon.net/r/label.json",
+    "https://ui.hyunjoon.net/r/utils.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/base-nova/ui/form.tsx",
+      "content": "\"use client\";\n\nimport { mergeProps } from \"@base-ui/react/merge-props\";\nimport { useRender } from \"@base-ui/react/use-render\";\nimport { createContext, useContext, useId, type ComponentProps } from \"react\";\nimport {\n  Controller,\n  FormProvider,\n  useFormContext,\n  useFormState,\n  type ControllerProps,\n  type FieldPath,\n  type FieldValues,\n} from \"react-hook-form\";\n\nimport { cn } from \"@/lib/utils\";\nimport { Label } from \"@/registry/base-nova/ui/label\";\n\nconst Form = FormProvider;\nconst FormFieldContext = createContext<{ name: string } | null>(null);\nconst FormItemContext = createContext<string | null>(null);\n\nfunction FormField<TValues extends FieldValues, TName extends FieldPath<TValues>>(\n  props: ControllerProps<TValues, TName>,\n) {\n  return (\n    <FormFieldContext.Provider value={{ name: props.name }}>\n      <Controller {...props} />\n    </FormFieldContext.Provider>\n  );\n}\n\nfunction useFormField() {\n  const field = useContext(FormFieldContext);\n  const id = useContext(FormItemContext);\n  const form = useFormContext();\n  const state = useFormState({ name: field?.name });\n  if (!field || !id || !form)\n    throw new Error(\"Form controls must be inside Form, FormField, and FormItem.\");\n  return {\n    name: field.name,\n    formItemId: `${id}-control`,\n    formDescriptionId: `${id}-description`,\n    formMessageId: `${id}-message`,\n    ...form.getFieldState(field.name, state),\n  };\n}\n\nfunction FormItem({ className, ...props }: ComponentProps<\"div\">) {\n  const id = useId();\n  return (\n    <FormItemContext.Provider value={id}>\n      <div data-slot=\"form-item\" className={cn(\"grid gap-2\", className)} {...props} />\n    </FormItemContext.Provider>\n  );\n}\n\nfunction FormLabel({ className, ...props }: ComponentProps<typeof Label>) {\n  const { error, formItemId } = useFormField();\n  return (\n    <Label\n      {...props}\n      htmlFor={formItemId}\n      data-error={!!error}\n      className={cn(\"data-[error=true]:text-destructive\", className)}\n    />\n  );\n}\n\nfunction FormControl({ render, ...props }: useRender.ComponentProps<\"input\">) {\n  const { error, formItemId, formDescriptionId, formMessageId } = useFormField();\n  return useRender({\n    defaultTagName: \"input\",\n    render,\n    props: mergeProps(props, {\n      id: formItemId,\n      \"aria-describedby\": error ? `${formDescriptionId} ${formMessageId}` : formDescriptionId,\n      \"aria-invalid\": !!error,\n    }),\n  });\n}\n\nfunction FormDescription({ className, ...props }: ComponentProps<\"p\">) {\n  const { formDescriptionId } = useFormField();\n  return (\n    <p\n      {...props}\n      id={formDescriptionId}\n      className={cn(\"text-sm text-muted-foreground\", className)}\n    />\n  );\n}\n\nfunction FormMessage({ className, children, ...props }: ComponentProps<\"p\">) {\n  const { error, formMessageId } = useFormField();\n  const content = error?.message ? String(error.message) : children;\n  if (!content) return null;\n  return (\n    <p\n      {...props}\n      id={formMessageId}\n      role=\"alert\"\n      className={cn(\"text-sm text-destructive\", className)}\n    >\n      {content}\n    </p>\n  );\n}\n\nexport {\n  Form,\n  FormField,\n  FormItem,\n  FormLabel,\n  FormControl,\n  FormDescription,\n  FormMessage,\n  useFormField,\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "docs": "https://ui.shadcn.com/docs/components/base/form"
+  },
+  "type": "registry:ui"
+}

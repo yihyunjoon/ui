@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "data-table",
+  "title": "Data Table",
+  "description": "Customizable Data Table component for React.",
+  "dependencies": [
+    "@tanstack/react-table@^9.2.4"
+  ],
+  "registryDependencies": [
+    "https://ui.hyunjoon.net/r/table.json"
+  ],
+  "files": [
+    {
+      "path": "src/registry/base-nova/ui/data-table.tsx",
+      "content": "\"use client\";\n\nimport { useTable, tableFeatures, type ColumnDef, type RowData } from \"@tanstack/react-table\";\nimport type { ReactNode } from \"react\";\n\nimport {\n  Table,\n  TableBody,\n  TableCell,\n  TableHead,\n  TableHeader,\n  TableRow,\n} from \"@/registry/base-nova/ui/table\";\n\nconst dataTableFeatures = tableFeatures({});\n\ntype DataTableProps<TData extends RowData> = {\n  columns: ColumnDef<typeof dataTableFeatures, TData>[];\n  data: TData[];\n  emptyMessage?: ReactNode;\n};\n\nfunction DataTable<TData extends RowData>({\n  columns,\n  data,\n  emptyMessage = \"No results.\",\n}: DataTableProps<TData>) {\n  const table = useTable({ features: dataTableFeatures, columns, data });\n  return (\n    <div data-slot=\"data-table\" className=\"overflow-hidden rounded-lg border\">\n      <Table>\n        <TableHeader>\n          {table.getHeaderGroups().map((group) => (\n            <TableRow key={group.id}>\n              {group.headers.map((header) => (\n                <TableHead key={header.id} colSpan={header.colSpan}>\n                  {!header.isPlaceholder && <table.FlexRender header={header} />}\n                </TableHead>\n              ))}\n            </TableRow>\n          ))}\n        </TableHeader>\n        <TableBody>\n          {table.getRowModel().rows.map((row) => (\n            <TableRow key={row.id}>\n              {row.getAllCells().map((cell) => (\n                <TableCell key={cell.id}>\n                  <table.FlexRender cell={cell} />\n                </TableCell>\n              ))}\n            </TableRow>\n          ))}\n          {!table.getRowModel().rows.length && (\n            <TableRow>\n              <TableCell colSpan={Math.max(columns.length, 1)} className=\"h-24 text-center\">\n                {emptyMessage}\n              </TableCell>\n            </TableRow>\n          )}\n        </TableBody>\n      </Table>\n    </div>\n  );\n}\n\nexport { DataTable, dataTableFeatures, type DataTableProps };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "docs": "https://ui.shadcn.com/docs/components/base/data-table"
+  },
+  "type": "registry:ui"
+}

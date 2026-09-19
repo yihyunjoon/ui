@@ -24,18 +24,44 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
+Edit component sources in `src/registry/base-nova/ui/`. The registry contains all
+63 entries in the official Base Nova catalog captured on September 20, 2026,
+plus Data Table, Date Picker, and Typography compositions (66 UI components).
+The shared `use-mobile` hook and `utils` bring the total to 68 installable items.
+The complete inventory and provenance are recorded in `src/registry/upstream.json`.
+
 Add distributable components to `src/registry/registry.json`. Declare all package
 dependencies in each item. `pnpm build` generates `public/r` using the locked
 shadcn CLI before Vite copies those files into `dist/client`.
 
 ```sh
 pnpm lint
+pnpm typecheck
+pnpm test
 pnpm build
 pnpm check:registry
+pnpm test:install
 ```
 
 The registry check validates the built schemas and compares embedded component
-sources against the current source files, catching stale build artifacts.
+sources against the current source files, catching stale build artifacts. It also
+checks component coverage and package/local dependency declarations. The install
+test serves the build locally, installs all items into a temporary React project
+using a different import alias, and typechecks that project.
+
+## Customization and composition
+
+- Keep UI edits in `src/registry/base-nova/ui/`; `src/components/ui/` supports the documentation shell.
+- Keep shared hooks in `src/registry/hooks/` and the class utility in `src/lib/utils.ts`.
+- Internal component dependencies use this registry's URLs, so installing Calendar or Sidebar also installs your customized Button.
+- The original Button styling is preserved. Other primitives use official Base Nova sources, adapted to the local class utility.
+- Data Table is a minimal generic TanStack Table v9 composition. Extend its feature set for filtering, sorting, selection, or pagination.
+- Date Picker is controlled through `value` and `onValueChange`. Typography exports semantic heading and text primitives.
+- The official Form catalog entry is empty. This project supplies `Form`, `FormField`, `FormItem`, `FormLabel`, `FormControl`, `FormDescription`, and `FormMessage` using React Hook Form. Compose controls with `render`, for example `<FormControl render={<Input {...field} />} />`.
+- Toast uses the current Base UI Toast implementation; Sonner is also included. Mount the appropriate provider/toaster in the consuming app. Theme-aware Sonner expects a `next-themes` provider.
+- Wrap tooltip consumers in `TooltipProvider`.
+
+Official components retain the [shadcn/ui MIT license](licenses/shadcn-ui.txt).
 
 ## Automatic deployment
 
@@ -47,7 +73,7 @@ only `main` can deploy.
 
 Before the first deployment, add the repository Actions secret
 `CLOUDFLARE_API_TOKEN`. Use a Cloudflare Workers deployment API token scoped to
-account `af3fc0a284268b9d46b0db62c32980c9`, following Cloudflare's
+the deployment account, following Cloudflare's
 [GitHub Actions setup](https://developers.cloudflare.com/workers/ci-cd/external-cicd/github-actions/).
 Do not use a local Wrangler OAuth session token as a CI secret.
 

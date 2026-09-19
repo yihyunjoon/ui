@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "title": "Direction",
+  "description": "Customizable Direction component for React.",
+  "dependencies": [
+    "@base-ui/react@^1.4.1"
+  ],
+  "files": [
+    {
+      "path": "src/registry/base-nova/ui/direction.tsx",
+      "content": "export { DirectionProvider, useDirection } from \"@base-ui/react/direction-provider\";\n",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "docs": "https://ui.shadcn.com/docs/components/base/direction"
+  },
+  "type": "registry:ui"
+}

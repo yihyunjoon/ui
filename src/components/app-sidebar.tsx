@@ -1,6 +1,5 @@
 import * as React from "react";
 
-import { SearchForm } from "#/components/search-form";
 import {
   Sidebar,
   SidebarContent,
@@ -13,11 +12,8 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "#/components/ui/sidebar";
-import { VersionSwitcher } from "#/components/version-switcher";
 
-// This is sample data.
 const data = {
-  versions: ["1.0.1", "1.1.0-alpha", "2.0.0-beta1"],
   navMain: [
     {
       title: "Components",
@@ -25,11 +21,11 @@ const data = {
       items: [
         {
           title: "Installation",
-          url: "#",
+          url: "#installation",
         },
         {
-          title: "Project Structure",
-          url: "#",
+          title: "Customization",
+          url: "#customization",
         },
       ],
     },
@@ -39,8 +35,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar {...props}>
       <SidebarHeader>
-        <VersionSwitcher versions={data.versions} defaultVersion={data.versions[0]} />
-        <SearchForm />
+        <a href="#components" className="p-2 font-semibold">
+          yihyunjoon/ui
+        </a>
       </SidebarHeader>
       <SidebarContent>
         {data.navMain.map((item) => (
@@ -50,7 +47,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <SidebarMenu>
                 {item.items.map((item) => (
                   <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton isActive={item.isActive} render={<a href={item.url} />}>
+                    <SidebarMenuButton render={<a href={item.url} />}>
                       {item.title}
                     </SidebarMenuButton>
                   </SidebarMenuItem>
