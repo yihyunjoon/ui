@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
 const registry = JSON.parse(await readFile("src/registry/registry.json", "utf8"));
+const variants = JSON.parse(await readFile("src/docs/variant-content.json", "utf8"));
 const content = JSON.parse(await readFile("src/docs/content.json", "utf8"));
 const baseUrl = process.argv[process.argv.indexOf("--url") + 1];
 assert.ok(process.argv.includes("--url") && baseUrl, "Usage: pnpm check:docs --url <origin>");
@@ -39,6 +40,10 @@ for (let start = 0; start < components.length; start += 4) {
       assert.ok(
         html.includes(`@/components/ui/${item.name}`),
         `${item.name}: missing usage example`,
+      );
+      assert.ok(
+        html.includes(variants[item.name].title),
+        `${item.name}: missing additional example`,
       );
       assert.ok(html.includes('id="api"'), `${item.name}: missing API reference`);
       assert.ok(html.includes('id="guidelines"'), `${item.name}: missing usage notes`);

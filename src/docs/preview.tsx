@@ -13,6 +13,8 @@ import type { ComponentName } from "./catalog";
 type PreviewLoader = () => Promise<{ default: ComponentType }>;
 const modules = import.meta.glob<{ default: ComponentType }>("./examples/*.tsx");
 
+const variantModules = import.meta.glob<{ default: ComponentType }>("./variants/*.tsx");
+
 class PreviewBoundary extends Component<
   { children: ReactNode; onRetry: () => void },
   { failed: boolean }
@@ -60,13 +62,24 @@ export function RecoverablePreview({ load }: { load: PreviewLoader }) {
   );
 }
 
-export function ComponentPreview({ name }: { name: ComponentName }) {
+export function ComponentPreview({
+  name,
+  variant = false,
+}: {
+  name: ComponentName;
+  variant?: boolean;
+}) {
   return (
     <div
       className="flex min-h-64 w-full items-center justify-center overflow-x-auto rounded-xl border bg-background p-6 sm:p-10"
       data-testid="component-preview"
     >
-      <RecoverablePreview key={name} load={modules[`./examples/${name}.tsx`]} />
+      <RecoverablePreview
+        key={`${name}-${variant}`}
+        load={
+          variant ? variantModules[`./variants/${name}.tsx`] : modules[`./examples/${name}.tsx`]
+        }
+      />
     </div>
   );
 }

@@ -26,3 +26,14 @@ const apis = import.meta.glob<import("#/components/api-reference").ApiPart[]>(".
 export async function loadApiReference(name: ComponentName) {
   return apis[`./api/${name}.json`]();
 }
+
+const variantSources = import.meta.glob<string>("./variants/*.tsx", {
+  query: "?raw",
+  import: "default",
+});
+export async function loadVariantSource(name: ComponentName) {
+  return (await variantSources[`./variants/${name}.tsx`]()).replaceAll(
+    "@/registry/base-nova/ui/",
+    "@/components/ui/",
+  );
+}

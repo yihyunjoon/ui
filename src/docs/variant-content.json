@@ -1,0 +1,266 @@
+{
+  "accordion": {
+    "title": "Multiple open items",
+    "description": "Allow several sections to remain expanded, including an initially open section."
+  },
+  "alert": {
+    "title": "Error feedback",
+    "description": "Use destructive styling for an error that needs attention."
+  },
+  "alert-dialog": {
+    "title": "Destructive confirmation",
+    "description": "Separate a destructive action from the cancel path."
+  },
+  "aspect-ratio": {
+    "title": "Square media",
+    "description": "Reserve a square instead of a widescreen area without layout shifts."
+  },
+  "attachment": {
+    "title": "Truncated filename",
+    "description": "Keep long filenames contained in a constrained attachment layout."
+  },
+  "avatar": {
+    "title": "Size comparison",
+    "description": "Compare small, default, and large fallback avatars."
+  },
+  "badge": {
+    "title": "Linked badge",
+    "description": "Compose a badge with an anchor for a navigable status or category."
+  },
+  "breadcrumb": {
+    "title": "Custom separator",
+    "description": "Use a text separator while retaining breadcrumb semantics."
+  },
+  "bubble": {
+    "title": "Outline conversation",
+    "description": "Compare outlined and secondary message treatments."
+  },
+  "button-group": {
+    "title": "Vertical group",
+    "description": "Stack related controls along the vertical axis."
+  },
+  "card": {
+    "title": "Compact card",
+    "description": "Use a small card for a denser summary."
+  },
+  "carousel": {
+    "title": "Looping slides",
+    "description": "Continue from the last slide back to the first."
+  },
+  "chart": {
+    "title": "Multiple series",
+    "description": "Compare two series with distinct labels and tooltip values."
+  },
+  "collapsible": {
+    "title": "Initially expanded",
+    "description": "Start open while preserving user control over the disclosure."
+  },
+  "combobox": {
+    "title": "Initial selection",
+    "description": "Start with a selected value and allow searching or clearing it."
+  },
+  "command": {
+    "title": "Unavailable action",
+    "description": "Keep an unavailable command visible but excluded from selection."
+  },
+  "context-menu": {
+    "title": "Destructive item",
+    "description": "Distinguish a destructive menu action visually."
+  },
+  "data-table": {
+    "title": "Empty records",
+    "description": "Show a useful empty state while retaining the column structure."
+  },
+  "date-picker": {
+    "title": "Empty and disabled",
+    "description": "Show a placeholder while selection is unavailable."
+  },
+  "dialog": {
+    "title": "Explicit close action",
+    "description": "Hide the corner close button and provide an explicit footer action."
+  },
+  "direction": {
+    "title": "Left-to-right",
+    "description": "Compare a left-to-right layout using the same direction provider."
+  },
+  "drawer": {
+    "title": "Top edge",
+    "description": "Open the drawer from the top of the viewport."
+  },
+  "dropdown-menu": {
+    "title": "Disabled menu item",
+    "description": "Present an unavailable action alongside enabled actions."
+  },
+  "empty": {
+    "title": "No search matches",
+    "description": "Offer a clear explanation when a search returns no results."
+  },
+  "field": {
+    "title": "Invalid field",
+    "description": "Associate an error message with an invalid input."
+  },
+  "form": {
+    "title": "Validation on blur",
+    "description": "Validate a minimum length on blur and display errors beside the field."
+  },
+  "hover-card": {
+    "title": "Top placement",
+    "description": "Position supplementary information above the trigger."
+  },
+  "input-group": {
+    "title": "Trailing addon",
+    "description": "Put a unit after the input instead of a prefix before it."
+  },
+  "input-otp": {
+    "title": "Disabled code",
+    "description": "Keep a verification code visible while editing is disabled."
+  },
+  "item": {
+    "title": "Muted compact item",
+    "description": "Combine a muted surface with a smaller item layout."
+  },
+  "kbd": {
+    "title": "Key sequence",
+    "description": "Describe a keyboard sequence using separate keycaps."
+  },
+  "label": {
+    "title": "Disabled field label",
+    "description": "Keep the label associated with a disabled input."
+  },
+  "marker": {
+    "title": "Bordered marker",
+    "description": "Separate message groups using a marker with a bottom border."
+  },
+  "menubar": {
+    "title": "Unavailable undo",
+    "description": "Disable history actions when no history exists."
+  },
+  "message": {
+    "title": "Outgoing message",
+    "description": "Align an outgoing message to the end of the conversation."
+  },
+  "native-select": {
+    "title": "Disabled selection",
+    "description": "Display a selected region without permitting changes."
+  },
+  "navigation-menu": {
+    "title": "Current location",
+    "description": "Mark the current navigation item for assistive technology."
+  },
+  "pagination": {
+    "title": "Last page boundary",
+    "description": "Start at the final page and keep Next within the valid range."
+  },
+  "popover": {
+    "title": "Aligned content",
+    "description": "Align a popup to the start of its trigger."
+  },
+  "progress": {
+    "title": "Indeterminate progress",
+    "description": "Use an indeterminate value when total work is unknown."
+  },
+  "questionnaire": {
+    "title": "Required answer and number shortcuts",
+    "description": "Require an answer and offer number-based keyboard shortcuts."
+  },
+  "radio-group": {
+    "title": "Unavailable choice",
+    "description": "Keep an unavailable density choice visible without allowing selection."
+  },
+  "resizable": {
+    "title": "Vertical panels",
+    "description": "Resize stacked panels using a visible handle."
+  },
+  "select": {
+    "title": "Disabled option",
+    "description": "Keep a listed team visible but unavailable for selection."
+  },
+  "separator": {
+    "title": "Vertical separator",
+    "description": "Separate adjacent content along the vertical axis."
+  },
+  "sheet": {
+    "title": "Left panel",
+    "description": "Open a side panel from the left edge."
+  },
+  "sidebar": {
+    "title": "Menu selection",
+    "description": "Switch the active menu item and update the content panel."
+  },
+  "skeleton": {
+    "title": "Card placeholder",
+    "description": "Reserve a card image and text while content loads."
+  },
+  "slider": {
+    "title": "Range selection",
+    "description": "Use two handles to control a lower and upper bound."
+  },
+  "sonner": {
+    "title": "Error notification",
+    "description": "Present an error with richer notification colors."
+  },
+  "spinner": {
+    "title": "Size comparison",
+    "description": "Compare a small inline spinner and a larger loading indicator."
+  },
+  "table": {
+    "title": "Selected row",
+    "description": "Highlight a selected record while retaining table semantics."
+  },
+  "tabs": {
+    "title": "Vertical line tabs",
+    "description": "Use vertical navigation with the line treatment."
+  },
+  "toast": {
+    "title": "Error toast",
+    "description": "Show actionable error feedback in the notification region."
+  },
+  "toggle-group": {
+    "title": "Multiple toggles",
+    "description": "Allow several formatting options to be active together."
+  },
+  "toggle": {
+    "title": "Disabled pressed toggle",
+    "description": "Preserve the pressed appearance while preventing changes."
+  },
+  "tooltip": {
+    "title": "Bottom placement",
+    "description": "Place keyboard-accessible help below its trigger."
+  },
+  "typography": {
+    "title": "Long-form structure",
+    "description": "Add a list and quotation to the text hierarchy."
+  },
+  "button": {
+    "title": "Variants, sizes, and loading",
+    "description": "Compare visual treatments and sizes, then simulate and complete a loading state."
+  },
+  "calendar": {
+    "title": "Controlled date range",
+    "description": "Choose a range of weekdays while weekends are unavailable."
+  },
+  "checkbox": {
+    "title": "Controlled and indeterminate",
+    "description": "Select individual teams or all teams, with a mixed state and a disabled choice."
+  },
+  "input": {
+    "title": "Validation and locked states",
+    "description": "Control an input value, show validation feedback, and compare disabled with read-only fields."
+  },
+  "message-scroller": {
+    "title": "Growing conversation",
+    "description": "Append messages and use the scroll-to-latest control to follow new content."
+  },
+  "scroll-area": {
+    "title": "Horizontal scrolling",
+    "description": "Browse a row of cards using a horizontal scrollbar."
+  },
+  "switch": {
+    "title": "Controlled settings",
+    "description": "Synchronize a switch with application state and compare a policy-locked setting."
+  },
+  "textarea": {
+    "title": "Character limit",
+    "description": "Control a multiline value, display a live character count, and enforce a maximum length."
+  }
+}

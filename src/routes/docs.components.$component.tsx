@@ -10,17 +10,19 @@ import {
   findComponentDoc,
   loadExampleSource,
   loadApiReference,
+  loadVariantSource,
 } from "#/docs/catalog";
 
 export const Route = createFileRoute("/docs/components/$component")({
   loader: async ({ params }) => {
     const doc = findComponentDoc(params.component);
     if (!doc) throw notFound();
-    const [code, api] = await Promise.all([
+    const [code, api, variantCode] = await Promise.all([
       loadExampleSource(doc.name),
       loadApiReference(doc.name),
+      loadVariantSource(doc.name),
     ]);
-    return { doc, code, api };
+    return { doc, code, api, variantCode };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -31,7 +33,7 @@ export const Route = createFileRoute("/docs/components/$component")({
   component: ComponentPage,
 });
 function ComponentPage() {
-  const { doc, code, api } = Route.useLoaderData();
+  const { doc, code, api, variantCode } = Route.useLoaderData();
   const index = componentDocs.findIndex((item) => item.name === doc.name);
   const previous = componentDocs[index - 1];
   const next = componentDocs[index + 1];
@@ -53,7 +55,7 @@ function ComponentPage() {
         </header>
         <section id="preview" className="scroll-mt-20 space-y-4">
           <h2 className="text-xl font-semibold">Preview</h2>
-          <ExampleViewer key={doc.name} name={doc.name} code={code} />
+          <ExampleViewer key={doc.name} name={doc.name} code={code} variantCode={variantCode} />
         </section>
         <section id="installation" className="scroll-mt-20 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Installation</h2>
@@ -68,7 +70,8 @@ function ComponentPage() {
         <section id="usage" className="scroll-mt-20 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Usage</h2>
           <p className="text-sm text-muted-foreground">
-            This is the complete example shown above. Adjust import aliases to match your project.
+            This is the basic example. Use the Code tab above for the selected example. Adjust
+            import aliases to match your project.
           </p>
           <CodeBlock key={`usage-${doc.name}`} code={code} />
         </section>

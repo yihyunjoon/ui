@@ -127,3 +127,9 @@ browser; Reset theme restores system appearance and the original design tokens.
 
 CI also checks formatting. GitHub Actions are pinned to reviewed release commits
 using the Node.js 24 action runtime; application builds continue to use Node.js 22.
+
+Each of the 66 component pages also has an additional state or composition example.
+Use the Example selector to compare it with Basic. The Code tab always displays
+the selected runnable source. Edit these examples in `src/docs/variants/` and their
+labels in `src/docs/variant-content.json`. Tests cover all 132 previews on both
+server and client, plus loading, validation, selection, and message interactions.
