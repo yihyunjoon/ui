@@ -1,0 +1,306 @@
+[
+  {
+    "name": "ToggleGroup",
+    "props": [
+      {
+        "name": "value",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The open state of the toggle group represented by an array of\nthe values of all pressed toggle buttons.\nThis is the controlled counterpart of `defaultValue`."
+      },
+      {
+        "name": "defaultValue",
+        "type": "readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The open state of the toggle group represented by an array of\nthe values of all pressed toggle buttons.\nThis is the uncontrolled counterpart of `value`."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((groupValue: string[], eventDetails: ToggleGroupPrimitive.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback fired when the pressed states of the toggle group changes."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the toggle group should ignore user interaction."
+      },
+      {
+        "name": "orientation",
+        "type": "\"horizontal\" | \"vertical\" | undefined",
+        "required": false,
+        "default": "\"horizontal\"",
+        "description": "Layout axis used by the component."
+      },
+      {
+        "name": "loopFocus",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether to loop keyboard focus back to the first item\nwhen the end of the list is reached while using the arrow keys."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "When `false` only one item in the group can be pressed. If any item in\nthe group becomes pressed, the others will become unpressed.\nWhen `true` multiple items can be pressed."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToggleGroupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToggleGroupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToggleGroupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "variant",
+        "type": "\"default\" | \"outline\" | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Visual treatment of the component."
+      },
+      {
+        "name": "size",
+        "type": "\"default\" | \"sm\" | \"lg\" | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Visual size of the component."
+      },
+      {
+        "name": "spacing",
+        "type": "number | undefined",
+        "required": false,
+        "default": "2",
+        "description": "Configures spacing; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "ToggleGroupItem",
+    "props": [
+      {
+        "name": "pressed",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the toggle button is currently pressed.\nThis is the controlled counterpart of `defaultPressed`."
+      },
+      {
+        "name": "defaultPressed",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the toggle button is currently pressed.\nThis is the uncontrolled counterpart of `pressed`."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "onPressedChange",
+        "type": "((pressed: boolean, eventDetails: TogglePrimitive.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback fired when the pressed state is changed."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A unique string that identifies the toggle when used\ninside a toggle group."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `false` if the rendered element is not a button (for example, `<div>`)."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLButtonElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToggleState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToggleState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToggleState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "variant",
+        "type": "\"default\" | \"outline\" | null | undefined",
+        "required": false,
+        "default": "\"default\"",
+        "description": "Visual treatment of the component."
+      },
+      {
+        "name": "size",
+        "type": "\"default\" | \"sm\" | \"lg\" | null | undefined",
+        "required": false,
+        "default": "\"default\"",
+        "description": "Visual size of the component."
+      }
+    ]
+  }
+]

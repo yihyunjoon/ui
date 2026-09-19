@@ -40,6 +40,7 @@ for (let start = 0; start < components.length; start += 4) {
         html.includes(`@/components/ui/${item.name}`),
         `${item.name}: missing usage example`,
       );
+      assert.ok(html.includes('id="api"'), `${item.name}: missing API reference`);
       assert.ok(html.includes('id="guidelines"'), `${item.name}: missing usage notes`);
     }),
   );

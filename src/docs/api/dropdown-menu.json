@@ -1,0 +1,1666 @@
+[
+  {
+    "name": "DropdownMenu",
+    "props": [
+      {
+        "name": "defaultOpen",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the menu is initially open.\n\nTo render a controlled menu, use the `open` prop instead."
+      },
+      {
+        "name": "loopFocus",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether to loop keyboard focus back to the first item\nwhen the end of the list is reached while using the arrow keys."
+      },
+      {
+        "name": "highlightItemOnHover",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether moving the pointer over items should highlight them.\nDisabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "modal",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Determines if the menu enters a modal state when open.\n- `true`: user interaction is limited to the menu: document page scroll is locked and pointer interactions on outside elements are disabled.\n- `false`: user interaction with the rest of the document is allowed."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "((open: boolean, eventDetails: MenuPrimitive.Root.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the menu is opened or closed."
+      },
+      {
+        "name": "onOpenChangeComplete",
+        "type": "((open: boolean) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called after any animations complete when the menu is closed."
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the menu is currently open."
+      },
+      {
+        "name": "orientation",
+        "type": "MenuRootOrientation | undefined",
+        "required": false,
+        "default": "'vertical'",
+        "description": "The visual orientation of the menu.\nControls whether roving focus uses up/down or left/right arrow keys."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "closeParentOnEsc",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "When in a submenu, determines whether pressing the Escape key\ncloses the entire menu, or only the current child menu."
+      },
+      {
+        "name": "actionsRef",
+        "type": "React.RefObject<MenuRootActions | null> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A ref to imperative actions.\n- `unmount`: When specified, the menu will not be unmounted when closed.\n   Instead, the `unmount` function must be called to unmount the menu manually.\n  Useful when the menu's animation is controlled by an external library.\n- `close`: When specified, the menu can be closed imperatively."
+      },
+      {
+        "name": "triggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the popover is associated with.\nThis is useful in conjunction with the `open` prop to create a controlled popover.\nThere's no need to specify this prop when the popover is uncontrolled (that is, when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the popover is associated with.\nThis is useful in conjunction with the `defaultOpen` prop to create an initially open popover."
+      },
+      {
+        "name": "handle",
+        "type": "MenuPrimitive.Handle<unknown> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A handle to associate the menu with a trigger.\nIf specified, allows external triggers to control the menu's open state."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode | PayloadChildRenderFunction<unknown>",
+        "required": false,
+        "default": "—",
+        "description": "The content of the popover.\nThis can be a regular React node or a render function that receives the `payload` of the active trigger."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuPortal",
+    "props": [
+      {
+        "name": "keepMounted",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether to keep the portal mounted in the DOM while the popup is hidden."
+      },
+      {
+        "name": "container",
+        "type": "HTMLElement | ShadowRoot | React.RefObject<HTMLElement | ShadowRoot | null> | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A parent element to render the portal element into."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuPortalState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuPortalState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuPortalState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuTrigger",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "handle",
+        "type": "MenuPrimitive.Handle<unknown> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A handle to associate the trigger with a menu."
+      },
+      {
+        "name": "payload",
+        "type": "unknown",
+        "required": false,
+        "default": "—",
+        "description": "A payload to pass to the menu when it is opened."
+      },
+      {
+        "name": "delay",
+        "type": "number | undefined",
+        "required": false,
+        "default": "100",
+        "description": "How long to wait before the menu may be opened on hover. Specified in milliseconds.\n\nRequires the `openOnHover` prop."
+      },
+      {
+        "name": "closeDelay",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": "How long to wait before closing the menu that was opened on hover.\nSpecified in milliseconds.\n\nRequires the `openOnHover` prop."
+      },
+      {
+        "name": "openOnHover",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the menu should also open when the trigger is hovered."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `false` if the rendered element is not a button (for example, `<div>`)."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLButtonElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuTriggerState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuTriggerState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuTriggerState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuContent",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "finalFocus",
+        "type": "boolean | React.RefObject<HTMLElement | null> | ((closeType: InteractionType) => boolean | HTMLElement | null | void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Determines the element to focus when the menu is closed.\n\n- `false`: Do not move focus.\n- `true`: Move focus based on the default behavior (trigger or previously focused element).\n- `RefObject`: Move focus to the ref element.\n- `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).\n  Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuPopupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuPopupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuPopupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "align",
+        "type": "Align | undefined",
+        "required": false,
+        "default": "\"start\"",
+        "description": "How to align the popup relative to the specified side."
+      },
+      {
+        "name": "side",
+        "type": "Side | undefined",
+        "required": false,
+        "default": "\"bottom\"",
+        "description": "Which side of the anchor element to align the popup against.\nMay automatically change to avoid collisions."
+      },
+      {
+        "name": "sideOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "4",
+        "description": "Distance between the anchor and the popup in pixels.\nAlso accepts a function that returns the distance to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      },
+      {
+        "name": "alignOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "0",
+        "description": "Additional offset along the alignment axis in pixels.\nAlso accepts a function that returns the offset to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuGroup",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "The content of the component."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuGroupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuGroupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuGroupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuLabel",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuGroupLabelState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuGroupLabelState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuGroupLabelState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "inset",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures inset; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuItem",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "closeOnClick",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether to close the menu when the item is clicked."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `true` if the rendered element is a native button."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuItemState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuItemState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuItemState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "inset",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures inset; see the accepted type."
+      },
+      {
+        "name": "variant",
+        "type": "\"default\" | \"destructive\" | undefined",
+        "required": false,
+        "default": "\"default\"",
+        "description": "Visual treatment of the component."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuCheckboxItem",
+    "props": [
+      {
+        "name": "checked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the checkbox item is currently ticked.\n\nTo render an uncontrolled checkbox item, use the `defaultChecked` prop instead."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the checkbox item is initially ticked.\n\nTo render a controlled checkbox item, use the `checked` prop instead."
+      },
+      {
+        "name": "onCheckedChange",
+        "type": "((checked: boolean, eventDetails: MenuPrimitive.CheckboxItem.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the checkbox item is ticked or unticked."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "closeOnClick",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether to close the menu when the item is clicked."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `true` if the rendered element is a native button."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuCheckboxItemState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuCheckboxItemState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuCheckboxItemState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "inset",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures inset; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuRadioGroup",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "The content of the component."
+      },
+      {
+        "name": "value",
+        "type": "any",
+        "required": false,
+        "default": "—",
+        "description": "The controlled value of the radio item that should be currently selected.\n\nTo render an uncontrolled radio group, use the `defaultValue` prop instead."
+      },
+      {
+        "name": "defaultValue",
+        "type": "any",
+        "required": false,
+        "default": "—",
+        "description": "The uncontrolled value of the radio item that should be initially selected.\n\nTo render a controlled radio group, use the `value` prop instead."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((value: any, eventDetails: MenuPrimitive.RadioGroup.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Function called when the selected value changes."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuRadioGroupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuRadioGroupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuRadioGroupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuRadioItem",
+    "props": [
+      {
+        "name": "value",
+        "type": "any",
+        "required": true,
+        "default": "—",
+        "description": "Value of the radio item.\nThis is the value that will be set in the MenuRadioGroup when the item is selected."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The click handler for the menu item."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "closeOnClick",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether to close the menu when the item is clicked."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `true` if the rendered element is a native button."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuRadioItemState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuRadioItemState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuRadioItemState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "inset",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures inset; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuSeparator",
+    "props": [
+      {
+        "name": "orientation",
+        "type": "Orientation | undefined",
+        "required": false,
+        "default": "'horizontal'",
+        "description": "The orientation of the separator."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: SeparatorState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: SeparatorState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuShortcut",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLSpanElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuSub",
+    "props": [
+      {
+        "name": "onOpenChange",
+        "type": "((open: boolean, eventDetails: MenuPrimitive.SubmenuRoot.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the menu is opened or closed."
+      },
+      {
+        "name": "closeParentOnEsc",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "When in a submenu, determines whether pressing the Escape key\ncloses the entire menu, or only the current child menu."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode | PayloadChildRenderFunction<unknown>",
+        "required": false,
+        "default": "—",
+        "description": "The content of the popover.\nThis can be a regular React node or a render function that receives the `payload` of the active trigger."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "actionsRef",
+        "type": "React.RefObject<MenuRootActions | null> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A ref to imperative actions.\n- `unmount`: When specified, the menu will not be unmounted when closed.\n   Instead, the `unmount` function must be called to unmount the menu manually.\n  Useful when the menu's animation is controlled by an external library.\n- `close`: When specified, the menu can be closed imperatively."
+      },
+      {
+        "name": "handle",
+        "type": "MenuPrimitive.Handle<unknown> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A handle to associate the menu with a trigger.\nIf specified, allows external triggers to control the menu's open state."
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the menu is currently open."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the menu is initially open.\n\nTo render a controlled menu, use the `open` prop instead."
+      },
+      {
+        "name": "onOpenChangeComplete",
+        "type": "((open: boolean) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called after any animations complete when the menu is closed."
+      },
+      {
+        "name": "triggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the popover is associated with.\nThis is useful in conjunction with the `open` prop to create a controlled popover.\nThere's no need to specify this prop when the popover is uncontrolled (that is, when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the popover is associated with.\nThis is useful in conjunction with the `defaultOpen` prop to create an initially open popover."
+      },
+      {
+        "name": "orientation",
+        "type": "MenuRootOrientation | undefined",
+        "required": false,
+        "default": "'vertical'",
+        "description": "The visual orientation of the menu.\nControls whether roving focus uses up/down or left/right arrow keys."
+      },
+      {
+        "name": "highlightItemOnHover",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether moving the pointer over items should highlight them.\nDisabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "loopFocus",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether to loop keyboard focus back to the first item\nwhen the end of the list is reached while using the arrow keys."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuSubTrigger",
+    "props": [
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Overrides the text label to use when the item is matched during keyboard text navigation."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "delay",
+        "type": "number | undefined",
+        "required": false,
+        "default": "100",
+        "description": "How long to wait before the menu may be opened on hover. Specified in milliseconds.\n\nRequires the `openOnHover` prop."
+      },
+      {
+        "name": "closeDelay",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": "How long to wait before closing the menu that was opened on hover.\nSpecified in milliseconds.\n\nRequires the `openOnHover` prop."
+      },
+      {
+        "name": "openOnHover",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the menu should also open when the trigger is hovered."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `true` if the rendered element is a native button."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuSubmenuTriggerState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuSubmenuTriggerState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuSubmenuTriggerState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "inset",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures inset; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "DropdownMenuSubContent",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "finalFocus",
+        "type": "boolean | React.RefObject<HTMLElement | null> | ((closeType: InteractionType) => boolean | HTMLElement | null | void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Determines the element to focus when the menu is closed.\n\n- `false`: Do not move focus.\n- `true`: Move focus based on the default behavior (trigger or previously focused element).\n- `RefObject`: Move focus to the ref element.\n- `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).\n  Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: MenuPopupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, MenuPopupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: MenuPopupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "align",
+        "type": "Align | undefined",
+        "required": false,
+        "default": "\"start\"",
+        "description": "How to align the popup relative to the specified side."
+      },
+      {
+        "name": "side",
+        "type": "Side | undefined",
+        "required": false,
+        "default": "\"right\"",
+        "description": "Which side of the anchor element to align the popup against.\nMay automatically change to avoid collisions."
+      },
+      {
+        "name": "sideOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "0",
+        "description": "Distance between the anchor and the popup in pixels.\nAlso accepts a function that returns the distance to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      },
+      {
+        "name": "alignOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "-3",
+        "description": "Additional offset along the alignment axis in pixels.\nAlso accepts a function that returns the offset to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      }
+    ]
+  }
+]

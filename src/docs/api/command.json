@@ -1,0 +1,1034 @@
+[
+  {
+    "name": "Command",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | (readonly string[] & string) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optional default item value when it is initially rendered."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible label for this command menu. Not shown visibly."
+      },
+      {
+        "name": "shouldFilter",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optionally set to `false` to turn off the automatic filtering and sorting.\nIf `false`, you must conditionally render valid items based on the search query yourself."
+      },
+      {
+        "name": "filter",
+        "type": "CommandFilter | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Custom filter function for whether each command menu item should matches the given search query.\nIt should return a number between 0 and 1, with 1 being the best match and 0 being hidden entirely.\nBy default, uses the `command-score` library."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optional controlled state of the selected command menu item."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((value: string) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the selected item of the menu changes."
+      },
+      {
+        "name": "loop",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optionally set to `true` to turn on looping around when using the arrow keys."
+      },
+      {
+        "name": "disablePointerSelection",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optionally set to `true` to disable selection via pointer events."
+      },
+      {
+        "name": "vimBindings",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Set to `false` to disable ctrl+n/j/p/k shortcuts. Defaults to `true`."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandDialog",
+    "props": [
+      {
+        "name": "modal",
+        "type": "boolean | \"trap-focus\" | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Determines if the dialog enters a modal state when open.\n- `true`: user interaction is limited to just the dialog: focus is trapped, document page scroll is locked, and pointer interactions on outside elements are disabled.\n- `false`: user interaction with the rest of the document is allowed.\n- `'trap-focus'`: focus is trapped inside the dialog, but document page scroll is not locked and pointer interactions outside of it remain enabled.\n\nWhen `modal` is `true` or `'trap-focus'`, render `<Dialog.Close>` inside `<Dialog.Popup>` so\ntouch screen readers can escape the popup."
+      },
+      {
+        "name": "disablePointerDismissal",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Determines whether the dialog should close on outside clicks."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "((open: boolean, eventDetails: DialogRoot.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the dialog is opened or closed."
+      },
+      {
+        "name": "actionsRef",
+        "type": "React.RefObject<DialogRootActions | null> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A ref to imperative actions.\n- `unmount`: When specified, the dialog will not be unmounted when closed.\nInstead, the `unmount` function must be called to unmount the dialog manually.\nUseful when the dialog's animation is controlled by an external library.\n- `close`: Closes the dialog imperatively when called."
+      },
+      {
+        "name": "handle",
+        "type": "DialogHandle<unknown> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A handle to associate the dialog with a trigger.\nIf specified, allows external triggers to control the dialog's open state.\nCan be created with the Dialog.createHandle() method."
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the dialog is currently open."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the dialog is initially open.\n\nTo render a controlled dialog, use the `open` prop instead."
+      },
+      {
+        "name": "onOpenChangeComplete",
+        "type": "((open: boolean) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called after any animations complete when the dialog is opened or closed."
+      },
+      {
+        "name": "triggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the dialog is associated with.\nThis is useful in conjunction with the `open` prop to create a controlled dialog.\nThere's no need to specify this prop when the popover is uncontrolled (that is, when the `open` prop is not set)."
+      },
+      {
+        "name": "defaultTriggerId",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "ID of the trigger that the dialog is associated with.\nThis is useful in conjunction with the `defaultOpen` prop to create an initially open dialog."
+      },
+      {
+        "name": "title",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Command Palette\"",
+        "description": "Title presented to the user."
+      },
+      {
+        "name": "description",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Search for a command to run...\"",
+        "description": "Supporting description for the component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "showCloseButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Displays the popup's close button."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": true,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      }
+    ]
+  },
+  {
+    "name": "CommandInput",
+    "props": [
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "alt",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible text alternative for the image."
+      },
+      {
+        "name": "src",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "URL of the displayed resource."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows more than one value to be selected."
+      },
+      {
+        "name": "max",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum allowed value."
+      },
+      {
+        "name": "min",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Minimum allowed value."
+      },
+      {
+        "name": "step",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Increment between valid values."
+      },
+      {
+        "name": "required",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the user must provide a value before form submission."
+      },
+      {
+        "name": "checked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Current checked state when controlled."
+      },
+      {
+        "name": "maxLength",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum number of input characters."
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hint shown when the control has no value."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optional controlled state for the value of the search input."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((search: string) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the search value changes."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandList",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible label for this List of suggestions. Not shown visibly."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandEmpty",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandGroup",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "heading",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Optional heading to render for this group."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "If no heading is provided, you must provide a value that is unique for this group."
+      },
+      {
+        "name": "forceMount",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether this group is forcibly rendered regardless of filtering."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandItem",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether this item is currently disabled."
+      },
+      {
+        "name": "onSelect",
+        "type": "((value: string) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler for when this item is selected, either via click or keyboard selection."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A unique value for this item.\nIf no value is provided, it will be inferred from `children` or the rendered `textContent`. If your `textContent` changes between renders, you _must_ provide a stable, unique `value`."
+      },
+      {
+        "name": "keywords",
+        "type": "string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Optional keywords to match against when filtering."
+      },
+      {
+        "name": "forceMount",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether this item is forcibly rendered regardless of filtering."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "CommandShortcut",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLSpanElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLSpanElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      }
+    ]
+  },
+  {
+    "name": "CommandSeparator",
+    "props": [
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "asChild",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Composes this component with its child element."
+      },
+      {
+        "name": "alwaysRender",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether this separator should always be rendered. Useful if you disable automatic filtering."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  }
+]

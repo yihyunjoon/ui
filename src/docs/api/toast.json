@@ -1,0 +1,815 @@
+[
+  {
+    "name": "Toaster",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "timeout",
+        "type": "number | undefined",
+        "required": false,
+        "default": "5000",
+        "description": "The default amount of time (in ms) before a toast is auto dismissed.\nA value of `0` will prevent the toast from being dismissed automatically."
+      },
+      {
+        "name": "limit",
+        "type": "number | undefined",
+        "required": false,
+        "default": "3",
+        "description": "The maximum number of toasts that can be displayed at once.\nWhen the limit is reached, the oldest toast will be removed to make room for the new one."
+      },
+      {
+        "name": "toastManager",
+        "type": "ToastManager<any> | undefined",
+        "required": false,
+        "default": "toast",
+        "description": "A global manager for toasts to use outside of a React component."
+      }
+    ]
+  },
+  {
+    "name": "Toast",
+    "props": [
+      {
+        "name": "toast",
+        "type": "ToastRootToastObject<any>",
+        "required": true,
+        "default": "—",
+        "description": "The toast to render."
+      },
+      {
+        "name": "swipeDirection",
+        "type": "\"left\" | \"right\" | \"up\" | \"down\" | (\"left\" | \"right\" | \"up\" | \"down\")[] | undefined",
+        "required": false,
+        "default": "['down', 'right']",
+        "description": "Direction(s) in which the toast can be swiped to dismiss."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastRootState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastRootState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastRootState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastAction",
+    "props": [
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `false` if the rendered element is not a button (for example, `<div>`)."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLButtonElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastActionState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastActionState> | undefined",
+        "required": false,
+        "default": "<Button variant=\"outline\" size=\"sm\" />",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastActionState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastClose",
+    "props": [
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `false` if the rendered element is not a button (for example, `<div>`)."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLButtonElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastCloseState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastCloseState> | undefined",
+        "required": false,
+        "default": "<Button variant=\"ghost\" size=\"icon-sm\" />",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastCloseState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastContent",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastContentState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastContentState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastContentState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastDescription",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLParagraphElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLParagraphElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLParagraphElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLParagraphElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLParagraphElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLParagraphElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastDescriptionState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastDescriptionState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastDescriptionState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastPortal",
+    "props": [
+      {
+        "name": "container",
+        "type": "HTMLElement | ShadowRoot | React.RefObject<HTMLElement | ShadowRoot | null> | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A parent element to render the portal element into."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastPortalState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastPortalState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastPortalState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastProvider",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "timeout",
+        "type": "number | undefined",
+        "required": false,
+        "default": "5000",
+        "description": "The default amount of time (in ms) before a toast is auto dismissed.\nA value of `0` will prevent the toast from being dismissed automatically."
+      },
+      {
+        "name": "limit",
+        "type": "number | undefined",
+        "required": false,
+        "default": "3",
+        "description": "The maximum number of toasts that can be displayed at once.\nWhen the limit is reached, the oldest toast will be removed to make room for the new one."
+      },
+      {
+        "name": "toastManager",
+        "type": "ToastManager<any> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A global manager for toasts to use outside of a React component."
+      }
+    ]
+  },
+  {
+    "name": "ToastTitle",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLHeadingElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLHeadingElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLHeadingElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLHeadingElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLHeadingElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLHeadingElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastTitleState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastTitleState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastTitleState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ToastViewport",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ToastViewportState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ToastViewportState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ToastViewportState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  }
+]

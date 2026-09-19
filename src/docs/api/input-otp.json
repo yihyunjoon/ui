@@ -1,0 +1,491 @@
+[
+  {
+    "name": "InputOTP",
+    "props": [
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "undefined | React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "React.HTMLInputTypeAttribute | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "alt",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible text alternative for the image."
+      },
+      {
+        "name": "src",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "URL of the displayed resource."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows more than one value to be selected."
+      },
+      {
+        "name": "max",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum allowed value."
+      },
+      {
+        "name": "min",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Minimum allowed value."
+      },
+      {
+        "name": "step",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Increment between valid values."
+      },
+      {
+        "name": "required",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the user must provide a value before form submission."
+      },
+      {
+        "name": "checked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Current checked state when controlled."
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hint shown when the control has no value."
+      },
+      {
+        "name": "value",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "onChange",
+        "type": "((newValue: string) => unknown) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "maxLength",
+        "type": "number",
+        "required": true,
+        "default": "—",
+        "description": "Maximum number of input characters."
+      },
+      {
+        "name": "textAlign",
+        "type": "\"center\" | \"left\" | \"right\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures text align; see the accepted type."
+      },
+      {
+        "name": "onComplete",
+        "type": "((...args: any[]) => unknown) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback for complete events. See the signature for parameters."
+      },
+      {
+        "name": "pushPasswordManagerStrategy",
+        "type": "\"none\" | \"increase-width\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures push password manager strategy; see the accepted type."
+      },
+      {
+        "name": "pasteTransformer",
+        "type": "((pasted: string) => string) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures paste transformer; see the accepted type."
+      },
+      {
+        "name": "containerClassName",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures container class name; see the accepted type."
+      },
+      {
+        "name": "noScriptCSSFallback",
+        "type": "string | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures no script cssfallback; see the accepted type."
+      },
+      {
+        "name": "nonce",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures nonce; see the accepted type."
+      },
+      {
+        "name": "render",
+        "type": "InputOTPRenderFn | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Element or render function used to compose a custom root element."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "InputOTPGroup",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      }
+    ]
+  },
+  {
+    "name": "InputOTPSlot",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "index",
+        "type": "number",
+        "required": true,
+        "default": "—",
+        "description": "Configures index; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "InputOTPSeparator",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLDivElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      }
+    ]
+  }
+]

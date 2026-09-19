@@ -1,0 +1,21 @@
+[
+  {
+    "name": "DirectionProvider",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "direction",
+        "type": "TextDirection | undefined",
+        "required": false,
+        "default": "'ltr'",
+        "description": "The reading direction of the text"
+      }
+    ]
+  }
+]

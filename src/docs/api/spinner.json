@@ -1,0 +1,112 @@
+[
+  {
+    "name": "Spinner",
+    "props": [
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "max",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum allowed value."
+      },
+      {
+        "name": "min",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Minimum allowed value."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "target",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Browsing context in which the link opens."
+      },
+      {
+        "name": "type",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "href",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Destination URL for the link."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<SVGSVGElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<SVGSVGElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<SVGSVGElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<SVGSVGElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<SVGSVGElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<SVGSVGElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  }
+]

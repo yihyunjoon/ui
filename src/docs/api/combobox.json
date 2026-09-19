@@ -1,0 +1,1624 @@
+[
+  {
+    "name": "Combobox",
+    "props": [
+      {
+        "name": "form",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Identifies the form that owns the internal input.\nUseful when the combobox is rendered outside the form."
+      },
+      {
+        "name": "filter",
+        "type": "((itemValue: Value, query: string, itemToString?: ((itemValue: Value) => string) | undefined) => boolean) | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Filter function used to match items vs input query."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The id of the component."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "modal",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Determines if the popup enters a modal state when open.\n- `true`: user interaction is limited to the popup: document page scroll is locked and pointer interactions on outside elements are disabled.\n- `false`: user interaction with the rest of the document is allowed."
+      },
+      {
+        "name": "open",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the popup is currently open. Use when controlled."
+      },
+      {
+        "name": "defaultOpen",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the popup is initially open.\n\nTo render a controlled popup, use the `open` prop instead."
+      },
+      {
+        "name": "onOpenChangeComplete",
+        "type": "((open: boolean) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called after any animations complete when the popup is opened or closed."
+      },
+      {
+        "name": "inline",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the list is rendered inline without using the popup."
+      },
+      {
+        "name": "grid",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether list items are presented in a grid layout.\nWhen enabled, arrow keys navigate across rows and columns inferred from DOM rows."
+      },
+      {
+        "name": "required",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the user must choose a value before submitting a form."
+      },
+      {
+        "name": "readOnly",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the user should be unable to choose a different option from the popup."
+      },
+      {
+        "name": "openOnInputClick",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the popup opens when clicking the input."
+      },
+      {
+        "name": "loopFocus",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether to loop keyboard focus back to the input when the end of the list is reached while using the arrow keys. The first item can then be reached by pressing <kbd>ArrowDown</kbd> again from the input, or the last item can be reached by pressing <kbd>ArrowUp</kbd> from the input.\nThe input is always included in the focus loop per [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/patterns/combobox/).\nWhen disabled, focus does not move when on the last element and the user presses <kbd>ArrowDown</kbd>, or when on the first element and the user presses <kbd>ArrowUp</kbd>."
+      },
+      {
+        "name": "inputValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The input value of the combobox. Use when controlled."
+      },
+      {
+        "name": "defaultInputValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The uncontrolled input value when initially rendered.\n\nTo render a controlled input, use the `inputValue` prop instead."
+      },
+      {
+        "name": "inputRef",
+        "type": "React.Ref<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A ref to the hidden input element."
+      },
+      {
+        "name": "items",
+        "type": "readonly any[] | readonly Group<any>[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The items to be displayed in the list.\nCan be either a flat array of items or an array of groups with items."
+      },
+      {
+        "name": "filteredItems",
+        "type": "readonly any[] | readonly Group<any>[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Filtered items to display in the list.\nWhen provided, the list will use these items instead of filtering the `items` prop internally.\nUse when you want to control filtering logic externally with the `useFilter()` hook."
+      },
+      {
+        "name": "virtualized",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the items are being externally virtualized."
+      },
+      {
+        "name": "limit",
+        "type": "number | undefined",
+        "required": false,
+        "default": "-1",
+        "description": "The maximum number of items to display in the list."
+      },
+      {
+        "name": "locale",
+        "type": "Intl.LocalesArgument",
+        "required": false,
+        "default": "—",
+        "description": "The locale to use for string comparison.\nDefaults to the user's runtime locale."
+      },
+      {
+        "name": "multiple",
+        "type": "Multiple | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether multiple items can be selected."
+      },
+      {
+        "name": "autoComplete",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Provides a hint to the browser for autofill."
+      },
+      {
+        "name": "autoHighlight",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the first matching item is highlighted automatically while filtering."
+      },
+      {
+        "name": "highlightItemOnHover",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether moving the pointer over items should highlight them.\nDisabling this prop allows CSS `:hover` to be differentiated from the `:focus` (`data-highlighted`) state."
+      },
+      {
+        "name": "itemToStringLabel",
+        "type": "((itemValue: Value) => string) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for display in the input.\nIf the shape of the object is `{ value, label }`, the label will be used automatically without needing to specify this prop."
+      },
+      {
+        "name": "itemToStringValue",
+        "type": "((itemValue: Value) => string) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "When the item values are objects (`<Combobox.Item value={object}>`), this function converts the object value to a string representation for form submission.\nIf the shape of the object is `{ value, label }`, the value will be used automatically without needing to specify this prop."
+      },
+      {
+        "name": "isItemEqualToValue",
+        "type": "((itemValue: Value, value: Value) => boolean) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Custom comparison logic used to determine if a combobox item value matches the current selected value. Useful when item values are objects without matching referentially.\nDefaults to `Object.is` comparison."
+      },
+      {
+        "name": "defaultValue",
+        "type": "ComboboxValueType<Value, Multiple> | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The uncontrolled selected value of the combobox when it's initially rendered.\n\nTo render a controlled combobox, use the `value` prop instead."
+      },
+      {
+        "name": "actionsRef",
+        "type": "React.RefObject<AriaCombobox.Actions | null> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A ref to imperative actions.\n- `unmount`: When specified, the combobox will not be unmounted when closed.\nInstead, the `unmount` function must be called to unmount the combobox manually.\nUseful when the combobox's animation is controlled by an external library."
+      },
+      {
+        "name": "onOpenChange",
+        "type": "((open: boolean, eventDetails: ComboboxPrimitive.Root.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the popup is opened or closed."
+      },
+      {
+        "name": "onInputValueChange",
+        "type": "((inputValue: string, eventDetails: ComboboxPrimitive.Root.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the input value changes."
+      },
+      {
+        "name": "onItemHighlighted",
+        "type": "((highlightedValue: Value | undefined, eventDetails: ComboboxPrimitive.Root.HighlightEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback fired when an item is highlighted or unhighlighted.\nReceives the highlighted item value (or `undefined` if no item is highlighted) and event details with a `reason` property describing why the highlight changed.\nThe `reason` can be:\n- `'keyboard'`: the highlight changed due to keyboard navigation.\n- `'pointer'`: the highlight changed due to pointer hovering.\n- `'none'`: the highlight changed programmatically."
+      },
+      {
+        "name": "value",
+        "type": "ComboboxValueType<Value, Multiple> | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The selected value of the combobox. Use when controlled."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((value: ComboboxValueType<Value, Multiple> | (Multiple extends true ? never : null), eventDetails: ComboboxPrimitive.Root.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler called when the selected value of the combobox changes."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxInput",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLInputElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLInputElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLInputElement, HTMLInputElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLInputElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLInputElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "React.HTMLInputTypeAttribute | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "alt",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible text alternative for the image."
+      },
+      {
+        "name": "src",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "URL of the displayed resource."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows more than one value to be selected."
+      },
+      {
+        "name": "max",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum allowed value."
+      },
+      {
+        "name": "min",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Minimum allowed value."
+      },
+      {
+        "name": "step",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Increment between valid values."
+      },
+      {
+        "name": "required",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the user must provide a value before form submission."
+      },
+      {
+        "name": "checked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Current checked state when controlled."
+      },
+      {
+        "name": "maxLength",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum number of input characters."
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hint shown when the control has no value."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxInputState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxInputState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "showTrigger",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Displays a control for opening the choice list."
+      },
+      {
+        "name": "showClear",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Displays a control for clearing the selection."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxContent",
+    "props": [
+      {
+        "name": "initialFocus",
+        "type": "boolean | React.RefObject<HTMLElement | null> | ((openType: InteractionType) => void | boolean | HTMLElement | null) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Determines the element to focus when the popup is opened.\n\n- `false`: Do not move focus.\n- `true`: Move focus based on the default behavior (first tabbable element or popup).\n- `RefObject`: Move focus to the ref element.\n- `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).\n  Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing."
+      },
+      {
+        "name": "finalFocus",
+        "type": "boolean | React.RefObject<HTMLElement | null> | ((closeType: InteractionType) => void | boolean | HTMLElement | null) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Determines the element to focus when the popup is closed.\n\n- `false`: Do not move focus.\n- `true`: Move focus based on the default behavior (trigger or previously focused element).\n- `RefObject`: Move focus to the ref element.\n- `function`: Called with the interaction type (`mouse`, `touch`, `pen`, or `keyboard`).\n  Return an element to focus, `true` to use the default behavior, or `false`/`undefined` to do nothing."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxPopupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxPopupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxPopupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "align",
+        "type": "Align | undefined",
+        "required": false,
+        "default": "\"start\"",
+        "description": "How to align the popup relative to the specified side."
+      },
+      {
+        "name": "side",
+        "type": "Side | undefined",
+        "required": false,
+        "default": "\"bottom\"",
+        "description": "Which side of the anchor element to align the popup against.\nMay automatically change to avoid collisions."
+      },
+      {
+        "name": "sideOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "6",
+        "description": "Distance between the anchor and the popup in pixels.\nAlso accepts a function that returns the distance to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      },
+      {
+        "name": "alignOffset",
+        "type": "number | OffsetFunction | undefined",
+        "required": false,
+        "default": "0",
+        "description": "Additional offset along the alignment axis in pixels.\nAlso accepts a function that returns the offset to read the dimensions of the anchor\nand positioner elements, along with its side and alignment.\n\nThe function takes a `data` object parameter with the following properties:\n- `data.anchor`: the dimensions of the anchor element with properties `width` and `height`.\n- `data.positioner`: the dimensions of the positioner element with properties `width` and `height`.\n- `data.side`: which side of the anchor element the positioner is aligned against.\n- `data.align`: how the positioner is aligned relative to the specified side."
+      },
+      {
+        "name": "anchor",
+        "type": "Element | VirtualElement | React.RefObject<Element | null> | (() => Element | VirtualElement | null) | null | undefined",
+        "required": false,
+        "default": "—",
+        "description": "An element to position the popup against.\nBy default, the popup will be positioned against the trigger."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxList",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode | ((item: any, index: number) => React.ReactNode)",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxListState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxListState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxListState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxItem",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "An optional click handler for the item when selected.\nIt fires when clicking the item with the pointer, as well as when pressing `Enter` with the keyboard if the item is highlighted when the `Input` or `List` element has focus."
+      },
+      {
+        "name": "index",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The index of the item in the list. Improves performance when specified by avoiding the need to calculate the index automatically from the DOM."
+      },
+      {
+        "name": "value",
+        "type": "any",
+        "required": false,
+        "default": "null",
+        "description": "A unique value that identifies this item."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `true` if the rendered element is a native button."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxItemState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxItemState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxItemState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxGroup",
+    "props": [
+      {
+        "name": "items",
+        "type": "readonly any[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Items to be rendered within this group.\nWhen provided, child `Collection` components will use these items."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxGroupState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxGroupState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxLabel",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxGroupLabelState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxGroupLabelState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxGroupLabelState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxCollection",
+    "props": [
+      {
+        "name": "children",
+        "type": "(item: any, index: number) => React.ReactNode",
+        "required": true,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxEmpty",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxEmptyState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxEmptyState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxEmptyState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxSeparator",
+    "props": [
+      {
+        "name": "orientation",
+        "type": "Orientation | undefined",
+        "required": false,
+        "default": "'horizontal'",
+        "description": "The orientation of the separator."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: SeparatorState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SeparatorState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: SeparatorState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxChips",
+    "props": [
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxChipsState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxChipsState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipsState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxChip",
+    "props": [
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxChipState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxChipState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxChipState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      },
+      {
+        "name": "showRemove",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Configures show remove; see the accepted type."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxChipsInput",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLInputElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLInputElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLInputElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLInputElement, HTMLInputElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLInputElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLInputElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "React.HTMLInputTypeAttribute | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "alt",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Accessible text alternative for the image."
+      },
+      {
+        "name": "src",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "URL of the displayed resource."
+      },
+      {
+        "name": "multiple",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows more than one value to be selected."
+      },
+      {
+        "name": "max",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum allowed value."
+      },
+      {
+        "name": "min",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Minimum allowed value."
+      },
+      {
+        "name": "step",
+        "type": "string | number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Increment between valid values."
+      },
+      {
+        "name": "required",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the user must provide a value before form submission."
+      },
+      {
+        "name": "checked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Current checked state when controlled."
+      },
+      {
+        "name": "maxLength",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Maximum number of input characters."
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hint shown when the control has no value."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxInputState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxInputState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxInputState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxTrigger",
+    "props": [
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the component should ignore user interaction."
+      },
+      {
+        "name": "nativeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Whether the component renders a native `<button>` element when replacing it\nvia the `render` prop.\nSet to `false` if the rendered element is not a button (for example, `<div>`)."
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLButtonElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLButtonElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLButtonElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: ComboboxTriggerState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, ComboboxTriggerState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: ComboboxTriggerState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  },
+  {
+    "name": "ComboboxValue",
+    "props": [
+      {
+        "name": "children",
+        "type": "React.ReactNode | ((selectedValue: any) => React.ReactNode)",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "placeholder",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "The placeholder value to display when no value is selected.\nThis is overridden by `children` if specified, or by a null item's label in `items`."
+      }
+    ]
+  }
+]

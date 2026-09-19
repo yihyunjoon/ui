@@ -1,0 +1,154 @@
+[
+  {
+    "name": "Toaster",
+    "props": [
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "invert",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures invert; see the accepted type."
+      },
+      {
+        "name": "theme",
+        "type": "\"light\" | \"dark\" | \"system\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures theme; see the accepted type."
+      },
+      {
+        "name": "position",
+        "type": "Position | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Preferred placement of the notification region."
+      },
+      {
+        "name": "hotkey",
+        "type": "string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures hotkey; see the accepted type."
+      },
+      {
+        "name": "richColors",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures rich colors; see the accepted type."
+      },
+      {
+        "name": "expand",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures expand; see the accepted type."
+      },
+      {
+        "name": "duration",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Duration in milliseconds."
+      },
+      {
+        "name": "gap",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures gap; see the accepted type."
+      },
+      {
+        "name": "visibleToasts",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures visible toasts; see the accepted type."
+      },
+      {
+        "name": "closeButton",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures close button; see the accepted type."
+      },
+      {
+        "name": "toastOptions",
+        "type": "ToastOptions | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures toast options; see the accepted type."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Inline CSS properties applied to the element."
+      },
+      {
+        "name": "offset",
+        "type": "Offset | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures offset; see the accepted type."
+      },
+      {
+        "name": "mobileOffset",
+        "type": "Offset | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures mobile offset; see the accepted type."
+      },
+      {
+        "name": "dir",
+        "type": "\"auto\" | \"ltr\" | \"rtl\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures dir; see the accepted type."
+      },
+      {
+        "name": "swipeDirections",
+        "type": "SwipeDirection[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures swipe directions; see the accepted type."
+      },
+      {
+        "name": "icons",
+        "type": "ToastIcons | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures icons; see the accepted type."
+      },
+      {
+        "name": "customAriaLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures custom aria label; see the accepted type."
+      },
+      {
+        "name": "containerAriaLabel",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Configures container aria label; see the accepted type."
+      }
+    ]
+  }
+]

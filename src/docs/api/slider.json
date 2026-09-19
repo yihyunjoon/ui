@@ -1,0 +1,203 @@
+[
+  {
+    "name": "Slider",
+    "props": [
+      {
+        "name": "defaultValue",
+        "type": "number | readonly number[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The uncontrolled value of the slider when it's initially rendered.\n\nTo render a controlled slider, use the `value` prop instead."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "false",
+        "description": "Whether the slider should ignore user interaction."
+      },
+      {
+        "name": "format",
+        "type": "Intl.NumberFormatOptions | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Options to format the input value."
+      },
+      {
+        "name": "locale",
+        "type": "Intl.LocalesArgument",
+        "required": false,
+        "default": "—",
+        "description": "The locale used by `Intl.NumberFormat` when formatting the value.\nDefaults to the user's runtime locale."
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "100",
+        "description": "The maximum allowed value of the slider.\nShould not be equal to min."
+      },
+      {
+        "name": "min",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": "The minimum allowed value of the slider.\nShould not be equal to max."
+      },
+      {
+        "name": "minStepsBetweenValues",
+        "type": "number | undefined",
+        "required": false,
+        "default": "0",
+        "description": "The minimum steps between values in a range slider."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Identifies the field when a form is submitted."
+      },
+      {
+        "name": "form",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Identifies the form that owns the slider inputs.\nUseful when the slider is rendered outside the form."
+      },
+      {
+        "name": "orientation",
+        "type": "Orientation | undefined",
+        "required": false,
+        "default": "'horizontal'",
+        "description": "The component orientation."
+      },
+      {
+        "name": "step",
+        "type": "number | undefined",
+        "required": false,
+        "default": "1",
+        "description": "The granularity with which the slider can step through values. (A \"discrete\" slider.)\nThe `min` prop serves as the origin for the valid values.\nWe recommend (max - min) to be evenly divisible by the step."
+      },
+      {
+        "name": "largeStep",
+        "type": "number | undefined",
+        "required": false,
+        "default": "10",
+        "description": "The granularity with which the slider can step through values when using Page Up/Page Down or Shift + Arrow Up/Arrow Down."
+      },
+      {
+        "name": "thumbAlignment",
+        "type": "\"center\" | \"edge\" | \"edge-client-only\" | undefined",
+        "required": false,
+        "default": "'center'",
+        "description": "How the thumb(s) are aligned relative to `Slider.Control` when the value is at `min` or `max`:\n- `center`: The center of the thumb is aligned with the control edge\n- `edge`: The thumb is inset within the control such that its edge is aligned with the control edge\n- `edge-client-only`: Same as `edge` but renders after React hydration on the client, reducing bundle size in return"
+      },
+      {
+        "name": "thumbCollisionBehavior",
+        "type": "\"none\" | \"push\" | \"swap\" | undefined",
+        "required": false,
+        "default": "'push'",
+        "description": "Controls how thumbs behave when they collide during pointer interactions.\n\n- `'push'` (default): Thumbs push each other without restoring their previous positions when dragged back.\n- `'swap'`: Thumbs swap places when dragged past each other.\n- `'none'`: Thumbs cannot move past each other; excess movement is ignored."
+      },
+      {
+        "name": "value",
+        "type": "number | readonly number[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The value of the slider.\nFor ranged sliders, provide an array with two values."
+      },
+      {
+        "name": "onValueChange",
+        "type": "((value: number | readonly number[], eventDetails: SliderPrimitive.Root.ChangeEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback function that is fired when the slider's value changed.\nYou can pull out the new value by accessing `event.target.value` (any).\n\nThe `eventDetails.reason` indicates what triggered the change:\n\n- `'input-change'` when the hidden range input emits a change event (for example, via form integration)\n- `'track-press'` when the control track is pressed\n- `'drag'` while dragging a thumb\n- `'keyboard'` for keyboard input\n- `'none'` when the change is triggered without a specific interaction"
+      },
+      {
+        "name": "onValueCommitted",
+        "type": "((value: number | readonly number[], eventDetails: SliderPrimitive.Root.CommitEventDetails) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Callback function that is fired when the `pointerup` is triggered.\n**Warning**: This is a generic event not a change event.\n\nThe `eventDetails.reason` indicates what triggered the commit:\n\n- `'drag'` while dragging a thumb\n- `'track-press'` when the control track is pressed\n- `'keyboard'` for keyboard input\n- `'input-change'` when the hidden range input emits a change event (for example, via form integration)\n- `'none'` when the commit occurs without a specific interaction"
+      },
+      {
+        "name": "ref",
+        "type": "React.Ref<HTMLDivElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows getting a ref to the component instance.\nOnce the component unmounts, React will set `ref.current` to `null`\n(or call the ref with `null` if you passed a callback ref)."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "((event: BaseUIEvent<React.FocusEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "((event: BaseUIEvent<React.ChangeEvent<HTMLDivElement, Element>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "((event: BaseUIEvent<React.KeyboardEvent<HTMLDivElement>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "((event: BaseUIEvent<React.MouseEvent<HTMLDivElement, MouseEvent>>) => void) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "className",
+        "type": "string | ((state: SliderRootState) => string | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "CSS class applied to the element, or a function that\nreturns a class based on the component's state."
+      },
+      {
+        "name": "render",
+        "type": "React.ReactElement<unknown, string | React.JSXElementConstructor<any>> | ComponentRenderFn<HTMLProps, SliderRootState> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Allows you to replace the component's HTML element\nwith a different tag, or compose it with another component.\n\nAccepts a `ReactElement` or a function that returns the element to render."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | ((state: SliderRootState) => React.CSSProperties | undefined) | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style applied to the element, or a function that\nreturns a style object based on the component's state."
+      }
+    ]
+  }
+]

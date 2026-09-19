@@ -19,7 +19,9 @@
     "check:registry": "node scripts/check-registry.mjs",
     "typecheck": "tsc --noEmit",
     "test:install": "node scripts/test-registry-install.mjs",
-    "check:docs": "node scripts/check-docs.mjs"
+    "check:docs": "node scripts/check-docs.mjs",
+    "docs:api": "node scripts/build-api-docs.mjs",
+    "check:api": "node scripts/build-api-docs.mjs --check"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",

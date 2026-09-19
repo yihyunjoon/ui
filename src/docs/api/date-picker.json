@@ -1,0 +1,49 @@
+[
+  {
+    "name": "DatePicker",
+    "props": [
+      {
+        "name": "value",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "onValueChange",
+        "type": "(date: Date | undefined) => void",
+        "required": true,
+        "default": "—",
+        "description": "Called with the updated value; use this to synchronize controlled state."
+      },
+      {
+        "name": "placeholder",
+        "type": "string | undefined",
+        "required": false,
+        "default": "\"Pick a date\"",
+        "description": "Hint shown when the control has no value."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "locale",
+        "type": "Partial<DayPickerLocale> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Locale used for date labels and formatting."
+      }
+    ]
+  }
+]

@@ -1,0 +1,614 @@
+[
+  {
+    "name": "Calendar",
+    "props": [
+      {
+        "name": "mode",
+        "type": "\"single\" | \"multiple\" | \"range\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Enable the selection of a single day, multiple days, or a range of days."
+      },
+      {
+        "name": "required",
+        "type": "false | undefined | true | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Whether the selection is required."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Class name to add to the root element."
+      },
+      {
+        "name": "classNames",
+        "type": "Partial<ClassNames> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Change the class names used by DayPicker.\n\nUse this prop when you need to change the default class names — for\nexample, when importing the style via CSS modules or when using a CSS\nframework."
+      },
+      {
+        "name": "modifiersClassNames",
+        "type": "ModifiersClassNames | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Change the class name for the day matching the `modifiers`."
+      },
+      {
+        "name": "style",
+        "type": "React.CSSProperties | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Style to apply to the root element."
+      },
+      {
+        "name": "styles",
+        "type": "Partial<Styles> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Change the inline styles of the HTML elements."
+      },
+      {
+        "name": "modifiersStyles",
+        "type": "ModifiersStyles | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Change the class name for the day matching the modifiers."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A unique id to add to the root element."
+      },
+      {
+        "name": "defaultMonth",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "The current month",
+        "description": "The initial month to show in the calendar.\n\nUse this prop to let DayPicker control the current month. If you need to\nset the month programmatically, use month and onMonthChange."
+      },
+      {
+        "name": "month",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The month displayed in the calendar.\n\nAs opposed to `defaultMonth`, use this prop with `onMonthChange` to change\nthe month programmatically."
+      },
+      {
+        "name": "numberOfMonths",
+        "type": "number | undefined",
+        "required": false,
+        "default": "1",
+        "description": "The number of displayed months."
+      },
+      {
+        "name": "startMonth",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The earliest month to start the month navigation."
+      },
+      {
+        "name": "endMonth",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The latest month to end the month navigation."
+      },
+      {
+        "name": "pagedNavigation",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Paginate the month navigation displaying the `numberOfMonths` at a time."
+      },
+      {
+        "name": "reverseMonths",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Render the months in reversed order (when numberOfMonths is set) to\ndisplay the most recent month first."
+      },
+      {
+        "name": "hideNavigation",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hide the navigation buttons. This prop won't disable the navigation: to\ndisable the navigation, use disableNavigation."
+      },
+      {
+        "name": "disableNavigation",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Disable the navigation between months. This prop won't hide the navigation:\nto hide the navigation, use hideNavigation."
+      },
+      {
+        "name": "captionLayout",
+        "type": "\"label\" | \"dropdown\" | \"dropdown-months\" | \"dropdown-years\" | undefined",
+        "required": false,
+        "default": "\"label\"",
+        "description": "Show dropdowns to navigate between months or years.\n\n- `label`: Displays the month and year as a label. Default value.\n- `dropdown`: Displays dropdowns for both month and year navigation.\n- `dropdown-months`: Displays a dropdown only for the month navigation.\n- `dropdown-years`: Displays a dropdown only for the year navigation.\n\n**Note:** By default, showing the dropdown will set the startMonth\nto 100 years ago and endMonth to the end of the current year. You\ncan override this behavior by explicitly setting `startMonth` and\n`endMonth`."
+      },
+      {
+        "name": "reverseYears",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Reverse the order of years in the dropdown when using\n`captionLayout=\"dropdown\"` or `captionLayout=\"dropdown-years\"`."
+      },
+      {
+        "name": "navLayout",
+        "type": "\"around\" | \"after\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Adjust the positioning of the navigation buttons.\n\n- `around`: Displays the buttons on either side of the caption.\n- `after`: Displays the buttons after the caption. This ensures the tab order\n  matches the visual order.\n\nIf not set, DayPicker preserves its legacy layout, but the tab order may\nnot align with the visual order when using `captionLayout=\"dropdown\"`."
+      },
+      {
+        "name": "fixedWeeks",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Display always 6 weeks per each month, regardless of the month’s number of\nweeks. Weeks will be filled with the days from the next month."
+      },
+      {
+        "name": "hideWeekdays",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Hide the row displaying the weekday row header."
+      },
+      {
+        "name": "showOutsideDays",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "true",
+        "description": "Show the outside days (days falling in the next or the previous month).\n\n**Note:** when a broadcastCalendar is set, this prop defaults to\ntrue."
+      },
+      {
+        "name": "showWeekNumber",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Show the week numbers column. Weeks are numbered according to the local\nweek index."
+      },
+      {
+        "name": "animate",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Animate navigating between months."
+      },
+      {
+        "name": "broadcastCalendar",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Display the weeks in the month following the broadcast calendar. Setting\nthis prop will ignore weekStartsOn (always Monday) and\nshowOutsideDays will default to true."
+      },
+      {
+        "name": "ISOWeek",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Use ISO week dates instead of the locale setting. Setting this prop will\nignore `weekStartsOn` and `firstWeekContainsDate`."
+      },
+      {
+        "name": "timeZone",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The time zone (IANA or UTC offset) to use in the calendar (experimental).\n\nSee\n[Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)\nfor the possible values."
+      },
+      {
+        "name": "noonSafe",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Keep calendar math at noon in the configured timeZone to avoid\nhistorical second-level offsets drifting dates across midnight.\n\nThis prop sets the time of the dates to noon (12:00)."
+      },
+      {
+        "name": "components",
+        "type": "Partial<CustomComponents> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Change the components used for rendering the calendar elements."
+      },
+      {
+        "name": "footer",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Add a footer to the calendar, acting as a live region.\n\nUse this prop to communicate the calendar's status to screen readers.\nPrefer strings over complex UI elements."
+      },
+      {
+        "name": "autoFocus",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "When a selection mode is set, DayPicker will focus the first selected day\n(if set) or today's date (if not disabled).\n\nUse this prop when you need to focus DayPicker after a user action, for\nimproved accessibility."
+      },
+      {
+        "name": "disabled",
+        "type": "Matcher | Matcher[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Apply the `disabled` modifier to the matching days. Disabled days cannot be\nselected when in a selection mode is set."
+      },
+      {
+        "name": "hidden",
+        "type": "Matcher | Matcher[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Apply the `hidden` modifier to the matching days. Will hide them from the\ncalendar."
+      },
+      {
+        "name": "today",
+        "type": "Date | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The today’s date. Default is the current date. This date will get the\n`today` modifier to style the day."
+      },
+      {
+        "name": "modifiers",
+        "type": "Record<string, Matcher | Matcher[] | undefined> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Add modifiers to the matching days."
+      },
+      {
+        "name": "labels",
+        "type": "Partial<Labels> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Labels creators to override the defaults. Use this prop to customize the\naria-label attributes in DayPicker."
+      },
+      {
+        "name": "formatters",
+        "type": "Partial<Formatters> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Formatters used to format dates to strings. Use this prop to override the\ndefault functions."
+      },
+      {
+        "name": "dir",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The text direction of the calendar. Use `ltr` for left-to-right (default)\nor `rtl` for right-to-left."
+      },
+      {
+        "name": "aria-label",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The aria-label attribute to add to the container element."
+      },
+      {
+        "name": "aria-labelledby",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The aria-labelledby attribute to add to the container element."
+      },
+      {
+        "name": "role",
+        "type": "\"dialog\" | \"application\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The role attribute to add to the container element."
+      },
+      {
+        "name": "nonce",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "A cryptographic nonce (\"number used once\") which can be used by Content\nSecurity Policy for the inline `style` attributes."
+      },
+      {
+        "name": "title",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Add a `title` attribute to the container element."
+      },
+      {
+        "name": "lang",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Add the language tag to the container element.\n\nWhen omitted, DayPicker uses the active locale code (`locale.code`). Set\nthis prop to override the language tag."
+      },
+      {
+        "name": "locale",
+        "type": "Partial<DayPickerLocale> | undefined",
+        "required": false,
+        "default": "enUS - The English locale default of `date-fns`.",
+        "description": "The locale object used to localize dates. Pass a locale from\n`react-day-picker/locale` to localize the calendar."
+      },
+      {
+        "name": "numerals",
+        "type": "Numerals | undefined",
+        "required": false,
+        "default": "`latn` Latin (Western Arabic)",
+        "description": "The numeral system to use when formatting dates.\n\n- `latn`: Latin (Western Arabic)\n- `arab`: Arabic-Indic\n- `arabext`: Eastern Arabic-Indic (Persian)\n- `deva`: Devanagari\n- `beng`: Bengali\n- `guru`: Gurmukhi\n- `gujr`: Gujarati\n- `orya`: Oriya\n- `tamldec`: Tamil\n- `telu`: Telugu\n- `knda`: Kannada\n- `mlym`: Malayalam"
+      },
+      {
+        "name": "weekStartsOn",
+        "type": "0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The index of the first day of the week (0 - Sunday). Overrides the locale's\ndefault."
+      },
+      {
+        "name": "firstWeekContainsDate",
+        "type": "1 | 4 | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The day of January that is always in the first week of the year."
+      },
+      {
+        "name": "useAdditionalWeekYearTokens",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Enable `DD` and `DDDD` for week year tokens when formatting or parsing\ndates."
+      },
+      {
+        "name": "useAdditionalDayOfYearTokens",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Enable `YY` and `YYYY` for day of year tokens when formatting or parsing\ndates."
+      },
+      {
+        "name": "onMonthChange",
+        "type": "MonthChangeEventHandler | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event fired when the user navigates between months."
+      },
+      {
+        "name": "onNextClick",
+        "type": "MonthChangeEventHandler | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when the next month button is clicked."
+      },
+      {
+        "name": "onPrevClick",
+        "type": "MonthChangeEventHandler | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when the previous month button is clicked."
+      },
+      {
+        "name": "onDayClick",
+        "type": "DayEventHandler<React.MouseEvent<Element, MouseEvent>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when a day is clicked."
+      },
+      {
+        "name": "onDayFocus",
+        "type": "DayEventHandler<React.FocusEvent<Element, Element>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when a day is focused."
+      },
+      {
+        "name": "onDayBlur",
+        "type": "DayEventHandler<React.FocusEvent<Element, Element>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when a day is blurred."
+      },
+      {
+        "name": "onDayKeyDown",
+        "type": "DayEventHandler<React.KeyboardEvent<Element>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when a key is pressed on a day."
+      },
+      {
+        "name": "onDayMouseEnter",
+        "type": "DayEventHandler<React.MouseEvent<Element, MouseEvent>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when the mouse enters a day."
+      },
+      {
+        "name": "onDayMouseLeave",
+        "type": "DayEventHandler<React.MouseEvent<Element, MouseEvent>> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when the mouse leaves a day."
+      },
+      {
+        "name": "dateLib",
+        "type": "Partial<DateLib> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Replace the default date library with a custom one. Experimental: not\nguaranteed to be stable (may not respect semver)."
+      },
+      {
+        "name": "selected",
+        "type": "Date | undefined | Date[] | undefined | DateRange | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The selected date."
+      },
+      {
+        "name": "onSelect",
+        "type": "OnSelectHandler<Date | undefined> | undefined | OnSelectHandler<Date> | undefined | OnSelectHandler<Date[] | undefined> | undefined | OnSelectHandler<Date[]> | undefined | OnSelectHandler<DateRange | undefined> | undefined | OnSelectHandler<DateRange> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Event handler when a day is selected."
+      },
+      {
+        "name": "buttonVariant",
+        "type": "\"link\" | \"default\" | \"destructive\" | \"outline\" | \"secondary\" | \"ghost\" | null | undefined",
+        "required": false,
+        "default": "\"ghost\"",
+        "description": "Visual variant used for calendar navigation buttons."
+      },
+      {
+        "name": "min",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The minimum number of selectable days."
+      },
+      {
+        "name": "max",
+        "type": "number | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The maximum number of selectable days."
+      },
+      {
+        "name": "excludeDisabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "When `true`, the range will reset when including a disabled day."
+      },
+      {
+        "name": "resetOnSelect",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "When `true`, clicking a day starts a new range if there is no current start\ndate or if a range is already complete. In those cases, the clicked day\nbecomes the start of the new range. When `required` is `false`, clicking\nthe same day of a single-day range clears the selection."
+      }
+    ]
+  },
+  {
+    "name": "CalendarDayButton",
+    "props": [
+      {
+        "name": "day",
+        "type": "CalendarDay",
+        "required": true,
+        "default": "—",
+        "description": "The day to render."
+      },
+      {
+        "name": "modifiers",
+        "type": "Modifiers",
+        "required": true,
+        "default": "—",
+        "description": "The modifiers to apply to the day."
+      },
+      {
+        "name": "disabled",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Prevents user interaction."
+      },
+      {
+        "name": "name",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Field name used in form data."
+      },
+      {
+        "name": "type",
+        "type": "\"button\" | \"submit\" | \"reset\" | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The native input or button behavior."
+      },
+      {
+        "name": "value",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "The current value when controlled by the application."
+      },
+      {
+        "name": "defaultChecked",
+        "type": "boolean | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial checked state for an uncontrolled control."
+      },
+      {
+        "name": "defaultValue",
+        "type": "string | number | readonly string[] | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Initial value for an uncontrolled component."
+      },
+      {
+        "name": "className",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Additional CSS classes merged with the component styles."
+      },
+      {
+        "name": "id",
+        "type": "string | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Unique identifier used to associate labels and descriptions."
+      },
+      {
+        "name": "children",
+        "type": "React.ReactNode",
+        "required": false,
+        "default": "—",
+        "description": "Content rendered inside this component."
+      },
+      {
+        "name": "onFocus",
+        "type": "React.FocusEventHandler<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control receives focus."
+      },
+      {
+        "name": "onBlur",
+        "type": "React.FocusEventHandler<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the control loses focus."
+      },
+      {
+        "name": "onChange",
+        "type": "React.ChangeEventHandler<HTMLButtonElement, Element> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the underlying form control changes; inspect the event for its value."
+      },
+      {
+        "name": "onKeyDown",
+        "type": "React.KeyboardEventHandler<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when a key is pressed while this element is focused."
+      },
+      {
+        "name": "onClick",
+        "type": "React.MouseEventHandler<HTMLButtonElement> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Called when the element is activated."
+      },
+      {
+        "name": "locale",
+        "type": "Partial<DayPickerLocale> | undefined",
+        "required": false,
+        "default": "—",
+        "description": "Locale used for date labels and formatting."
+      }
+    ]
+  }
+]

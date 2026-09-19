@@ -107,3 +107,8 @@ pnpm check:docs --url http://localhost:3000
 
 CI runs this check against production after deployment, including unknown-page
 404 handling. The documentation source is separate from the distributable registry.
+
+API reference tables are generated from the installed TypeScript component types and JSDoc.
+Run `pnpm docs:api` after changing component props or dependency versions. CI runs
+`pnpm check:api` to prevent stale reference tables. Native DOM props are summarized;
+mode-specific props remain subject to their TypeScript discriminated unions.

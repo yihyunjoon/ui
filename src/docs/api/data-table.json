@@ -1,0 +1,28 @@
+[
+  {
+    "name": "DataTable",
+    "props": [
+      {
+        "name": "columns",
+        "type": "ColumnDef<{}, TData>[]",
+        "required": true,
+        "default": "—",
+        "description": "Column definitions describing how each record is displayed."
+      },
+      {
+        "name": "data",
+        "type": "TData[]",
+        "required": true,
+        "default": "—",
+        "description": "Records provided to the component."
+      },
+      {
+        "name": "emptyMessage",
+        "type": "ReactNode",
+        "required": false,
+        "default": "\"No results.\"",
+        "description": "Content displayed when no records are available."
+      }
+    ]
+  }
+]

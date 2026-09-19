@@ -1,14 +1,24 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
+import { ApiReference } from "#/components/api-reference";
 import { CodeBlock } from "#/components/code-block";
-import { componentDocs, findComponentDoc, loadExampleSource } from "#/docs/catalog";
+import {
+  componentDocs,
+  findComponentDoc,
+  loadExampleSource,
+  loadApiReference,
+} from "#/docs/catalog";
 import { ComponentPreview } from "#/docs/preview";
 
 export const Route = createFileRoute("/docs/components/$component")({
   loader: async ({ params }) => {
     const doc = findComponentDoc(params.component);
     if (!doc) throw notFound();
-    return { doc, code: await loadExampleSource(doc.name) };
+    const [code, api] = await Promise.all([
+      loadExampleSource(doc.name),
+      loadApiReference(doc.name),
+    ]);
+    return { doc, code, api };
   },
   head: ({ loaderData }) => ({
     meta: [
@@ -19,7 +29,7 @@ export const Route = createFileRoute("/docs/components/$component")({
   component: ComponentPage,
 });
 function ComponentPage() {
-  const { doc, code } = Route.useLoaderData();
+  const { doc, code, api } = Route.useLoaderData();
   const index = componentDocs.findIndex((item) => item.name === doc.name);
   const previous = componentDocs[index - 1];
   const next = componentDocs[index + 1];
@@ -60,6 +70,7 @@ function ComponentPage() {
           </p>
           <CodeBlock key={`usage-${doc.name}`} code={code} />
         </section>
+        <ApiReference parts={api} />
         <section id="guidelines" className="scroll-mt-20 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Usage notes</h2>
           <p className="leading-7 text-muted-foreground">{doc.guidance}</p>
@@ -90,7 +101,7 @@ function ComponentPage() {
       <aside className="hidden w-36 shrink-0 xl:block">
         <nav aria-label="On this page" className="sticky top-24 space-y-3 text-sm">
           <p className="font-medium">On this page</p>
-          {["Preview", "Installation", "Usage", "Guidelines"].map((section) => (
+          {["Preview", "Installation", "Usage", "API", "Guidelines"].map((section) => (
             <a
               key={section}
               href={`#${section.toLowerCase()}`}
