@@ -1,6 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 
-export function CodeBlock({ code }: { code: string }) {
+type Tokens = Awaited<ReturnType<typeof import("#/lib/highlight").highlight>>;
+export function CodeBlock({
+  code,
+  language = "tsx",
+}: {
+  code: string;
+  language?: "tsx" | "shellscript";
+}) {
+  const [highlighted, setHighlighted] = useState<{ code: string; tokens: Tokens } | null>(null);
+  useEffect(() => {
+    let active = true;
+    import("#/lib/highlight")
+      .then((module) => module.highlight(code, language))
+      .then((tokens) => {
+        if (active) setHighlighted({ code, tokens });
+      })
+      .catch(() => {
+        /* Keep the selectable plain-text fallback. */
+      });
+    return () => {
+      active = false;
+    };
+  }, [code, language]);
   const [status, setStatus] = useState("");
   async function copy() {
     try {
@@ -25,7 +47,29 @@ export function CodeBlock({ code }: { code: string }) {
         </button>
       </div>
       <pre className="max-h-[36rem] overflow-auto p-4 text-sm leading-6">
-        <code>{code}</code>
+        <code>
+          {highlighted?.code === code
+            ? highlighted.tokens.map((line, index) => (
+                <span key={index}>
+                  {line.map((token, tokenIndex) => (
+                    <span
+                      key={tokenIndex}
+                      className="syntax-token"
+                      style={
+                        {
+                          color: token.variants.light.color,
+                          "--syntax-dark": token.variants.dark.color,
+                        } as CSSProperties
+                      }
+                    >
+                      {token.content}
+                    </span>
+                  ))}
+                  {index < highlighted.tokens.length - 1 ? "\n" : ""}
+                </span>
+              ))
+            : code}
+        </code>
       </pre>
     </div>
   );

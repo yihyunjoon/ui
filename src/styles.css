@@ -331,3 +331,7 @@ a {
     @apply font-sans;
   }
 }
+
+.dark .syntax-token {
+  color: var(--syntax-dark) !important;
+}

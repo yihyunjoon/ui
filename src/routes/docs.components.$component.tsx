@@ -2,13 +2,14 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 
 import { ApiReference } from "#/components/api-reference";
 import { CodeBlock } from "#/components/code-block";
+import { ExampleViewer } from "#/components/example-viewer";
+import { InstallCommand } from "#/components/install-command";
 import {
   componentDocs,
   findComponentDoc,
   loadExampleSource,
   loadApiReference,
 } from "#/docs/catalog";
-import { ComponentPreview } from "#/docs/preview";
 
 export const Route = createFileRoute("/docs/components/$component")({
   loader: async ({ params }) => {
@@ -51,16 +52,16 @@ function ComponentPage() {
         </header>
         <section id="preview" className="scroll-mt-20 space-y-4">
           <h2 className="text-xl font-semibold">Preview</h2>
-          <ComponentPreview key={doc.name} name={doc.name} />
+          <ExampleViewer key={doc.name} name={doc.name} code={code} />
         </section>
         <section id="installation" className="scroll-mt-20 space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight">Installation</h2>
           <p className="text-sm text-muted-foreground">
             Install this component and its dependencies in a project initialized with shadcn.
           </p>
-          <CodeBlock
+          <InstallCommand
             key={`install-${doc.name}`}
-            code={`pnpm dlx shadcn@latest add https://ui.hyunjoon.net/r/${doc.name}.json`}
+            command={`add https://ui.hyunjoon.net/r/${doc.name}.json`}
           />
         </section>
         <section id="usage" className="scroll-mt-20 space-y-4">

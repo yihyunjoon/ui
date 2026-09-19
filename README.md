@@ -112,3 +112,7 @@ API reference tables are generated from the installed TypeScript component types
 Run `pnpm docs:api` after changing component props or dependency versions. CI runs
 `pnpm check:api` to prevent stale reference tables. Native DOM props are summarized;
 mode-specific props remain subject to their TypeScript discriminated unions.
+
+Examples include Preview/Code tabs, syntax-highlighted TSX, and copy controls.
+Installation commands can be switched between pnpm, npm, Yarn, and Bun. Highlighting
+loads progressively using Shiki with only TSX and shell grammars.

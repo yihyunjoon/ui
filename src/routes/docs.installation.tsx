@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
 import { CodeBlock } from "#/components/code-block";
+import { InstallCommand } from "#/components/install-command";
 
 export const Route = createFileRoute("/docs/installation")({
   head: () => ({ meta: [{ title: "Installation — yihyunjoon/ui" }] }),
@@ -21,7 +22,7 @@ function Installation() {
           Start with a React project using Tailwind CSS 4, then initialize shadcn to configure your
           aliases and theme variables.
         </p>
-        <CodeBlock code="pnpm dlx shadcn@latest init" />
+        <InstallCommand command="init" />
       </section>
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">2. Add a component</h2>
@@ -29,7 +30,7 @@ function Installation() {
           Use a component’s registry URL. Its package dependencies and related components are
           installed with it.
         </p>
-        <CodeBlock code="pnpm dlx shadcn@latest add https://ui.hyunjoon.net/r/button.json" />
+        <InstallCommand command="add https://ui.hyunjoon.net/r/button.json" />
       </section>
       <section className="space-y-4">
         <h2 className="text-2xl font-semibold">3. Use and customize</h2>
