@@ -1,4 +1,5 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "yihyunjoon/ui",
   "homepage": "https://ui.hyunjoon.net",
   "items": [
@@ -7,7 +8,10 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "A Base UI button component.",
-      "dependencies": ["@base-ui/react"],
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority"
+      ],
       "files": [
         {
           "path": "src/registry/button.tsx",
