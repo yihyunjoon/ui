@@ -43,8 +43,10 @@ export function ThemeSettings() {
     }
   }, [preferences, ready]);
   return (
-    <details className="relative">
-      <summary className="cursor-pointer rounded-md border px-2 py-1 text-sm">Theme</summary>
+    <details className="relative shrink-0">
+      <summary className="cursor-pointer rounded-md border px-2 py-1 text-sm whitespace-nowrap">
+        Theme
+      </summary>
       <div className="absolute right-0 z-40 mt-2 w-64 space-y-4 rounded-xl border bg-popover p-4 text-popover-foreground shadow-lg">
         <p className="text-sm font-medium">Customize appearance</p>
         <label className="block space-y-1 text-sm">

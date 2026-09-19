@@ -36,7 +36,7 @@ export function DocsSearch() {
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="ml-auto rounded-md border px-2 py-1 text-sm text-muted-foreground"
+        className="ml-auto shrink-0 rounded-md border px-2 py-1 text-sm text-muted-foreground"
         aria-keyshortcuts="Meta+K Control+K"
       >
         Search <kbd className="hidden sm:inline">⌘K</kbd>

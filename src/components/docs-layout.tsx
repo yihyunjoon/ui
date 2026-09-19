@@ -20,20 +20,22 @@ export function DocsLayout({ children }: { children: ReactNode }) {
         <header className="sticky top-0 z-20 flex h-14 shrink-0 items-center gap-3 border-b bg-background/95 px-4 backdrop-blur">
           <SidebarTrigger aria-label="Toggle documentation sidebar" />
           <span className="h-4 w-px bg-border" />
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm">
+          <nav aria-label="Breadcrumb" className="flex min-w-0 items-center gap-2 text-sm">
             <Link to="/docs" activeOptions={{ exact: true }} className="text-muted-foreground">
               Docs
             </Link>
             <span aria-hidden="true" className="text-muted-foreground">
               /
             </span>
-            <span aria-current="page">{title}</span>
+            <span aria-current="page" className="truncate">
+              {title}
+            </span>
           </nav>
           <DocsSearch />
           <ThemeSettings />
           <a
             href="https://github.com/yihyunjoon/ui"
-            className="text-sm text-muted-foreground hover:text-foreground"
+            className="hidden shrink-0 text-sm text-muted-foreground hover:text-foreground sm:inline-flex"
           >
             GitHub ↗
           </a>
